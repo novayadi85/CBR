@@ -1,0 +1,3 @@
+Time : 16:38:00
+SQLSTATE[HY000]: General error: 2031 
+Raw SQL : SELECT * FROM users WHERE username = :admin LIMIT 1

@@ -1,0 +1,35 @@
+<?php foreach($criteria as $key => $cr):?>
+<div class="block-sub_selection">
+<h3><?php echo $cr->criteria;?></h3>
+	<div class="sub-option">
+		<?php 
+
+		
+		$nSub = new SubcriteriaModel();
+		$subs = $nSub->getSubbyParentId($cr->id);
+	
+
+		if(count($subs) >= 1){?>
+			
+			<?php 
+			foreach(array2Object($subs) as $keysub => $sub):?>
+				<p><label for="<?php echo $sub->sub_criteria;?>" style="width:200px;"><?php echo $sub->sub_criteria;?></label>
+				<?php /** for($jj=1;$jj<=5;$jj++): **/ ?>
+				
+				<input class="form-control" name="sub[<?php echo $sub->id;?>]" type="text" value=""/>
+				<!--<span><?php echo $jj;?></span>-->
+				
+				<?php/**  endfor; ***/ ?>
+				</p>
+				
+			<?php endforeach;?>
+		<?php } else { ?>
+		<p><?php echo lang('Data Sub kriteria belum tersedia')?></p>
+		<?php } ?>
+	</div>
+</div>
+<?php endforeach;?>
+<input type="hidden" name="action" value="<?php echo $action;?>"/>
+<button class="btn btn-primary" type="submit">Save</button>
+<button class="btn btn-default" type="reset">Reset</button>
+			

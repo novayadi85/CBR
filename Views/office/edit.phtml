@@ -1,0 +1,37 @@
+<div class="col-lg-12">
+<?php echo (isset($msg))?$msg:'';?>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Form Add Office<br/>
+	</div>
+
+<div class="panel-body">
+
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-6">
+			<form role="form" method="post" action="<?php echo site('office/update/'.$request['id'])?>">
+				<div class="form-group">
+					<label>Nama Kantor Cabang</label>
+					<input class="form-control" name="name" value="<?php echo (isset($request['name']))? $request['name']:'' ?>">					
+				</div>
+				
+				<div class="form-group">
+					<label>Telp</label>
+					<input class="form-control" name="telp" value="<?php echo (isset($request['telp']))? $request['telp']:'' ?>">
+				</div>
+				<div class="form-group">
+					<label>Alamat</label>
+					<textarea rows="3" name="address" class="form-control"><?php echo (isset($request['address']))? $request['address']:'' ?></textarea>
+				</div>
+				
+				<button class="btn btn-primary" type="submit">Update</button>
+				<button class="btn btn-default" type="reset">Reset</button>
+			</form>
+        </div>			
+	</div>
+	<!-- /.row -->
+</div>
+</div>
+
+</div>

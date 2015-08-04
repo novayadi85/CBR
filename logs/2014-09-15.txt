@@ -1,0 +1,7 @@
+Time : 14:04:09
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO offices (name,telp,address) VALUES (:name,:telp,:address)
+
+Time : 13:48:19
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'profilematching_db.users' doesn't exist
+Raw SQL : SELECT * FROM users WHERE username= :username LIMIT 1

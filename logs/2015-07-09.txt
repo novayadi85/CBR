@@ -1,0 +1,15 @@
+Time : 08:18:35
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_cbr.criteria' doesn't exist
+Raw SQL : SELECT * FROM criteria
+
+Time : 08:18:29
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_cbr.sub_criteria' doesn't exist
+Raw SQL : SELECT * FROM sub_criteria
+
+Time : 07:54:37
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_cbr.offices' doesn't exist
+Raw SQL : SELECT * FROM offices
+
+Time : 07:52:45
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_cbr.criteria' doesn't exist
+Raw SQL : SELECT * FROM criteria

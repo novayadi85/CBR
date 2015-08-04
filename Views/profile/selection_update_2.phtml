@@ -1,0 +1,42 @@
+<div class="col-lg-12">
+<?php echo (isset($msg))?$msg:'';?>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		PENILAIAN KANTOR CABANG
+	</div>
+
+<div class="panel-body" id="profile">
+
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-6">
+			<form role="form" method="post" action="<?php echo site('profile/save')?>">
+
+<?php foreach($criteria as $key => $cr):?>
+<div class="block-sub_selection">
+<h3><?php echo $cr->criteria;?></h3>
+	<div class="sub-option">
+		<?php foreach(array2Object($profile) as $key => $profil):?>
+			<?php if($profil->criteria_id == $cr->id):?>
+			<?php //$option = ProfileOptionModel::getByProfile($profil['profile_id']);?>			
+				<p><label for="<?php echo $profil->sub_criteria;?>" style="width:200px;"><?php echo $profil->sub_criteria;?></label>
+				<input class="form-control" name="sub[<?php echo $profil->sub_criteria_id;?>]" type="text" value="<?php echo $profil->profile_persentase;?>"/>
+				</p>	
+				<input type="hidden" name="profile_id" value="<?php echo $profil->profile_id;?>"/>
+			<?php endif;?>
+		<?php endforeach;?>
+		
+	</div>
+</div>
+<?php endforeach;?>
+<input type="hidden" name="action" value="<?php echo $action;?>"/>
+<input type="hidden" name="action" value="<?php echo $action;?>"/>
+
+<button class="btn btn-primary" type="submit">Save</button>
+<button class="btn btn-default" type="reset">Reset</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>			

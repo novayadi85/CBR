@@ -1,0 +1,135 @@
+
+
+<!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+					<?php echo (isset($msg))?$msg:'';?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <?php echo $title;?>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+											<th>No.</th>
+                                            <th>Nama Kantor Cabang</th>
+											<th>Telephone</th>
+                                            <th>Alamat</th>
+                                            <th>Point</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+										<?php 
+										if(count($rangking) > 1){
+												foreach($rangking as $index => $rang){
+													if(!empty($rang)){
+														$data[$index] = $officeModel->getProperty($index);
+														$data[$index]['point'] = $rang;
+													}		
+												}
+										?>
+                                        <?php $i = 1; foreach($data as $office):?>
+										<tr class="">
+											<td><?php echo $i++;?></td>
+                                            <td><?php echo $office['name']?></td>
+                                            <td><?php echo $office['telp']?></td>
+                                            <td><?php echo $office['address']?></td>
+                                             <td><?php echo $office['point']?></td>
+											<?php endforeach;?>
+                                        </tr>
+										<?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+
+                        <!-- /.panel-body -->
+						
+						<div class="panel-body">
+						<form role="form" method="post" action="<?php echo site('rangking/index')?>">
+						<div class="col-sm">
+							<div style="display:inline-block">
+							<label>Bulan</label>
+								<select name="month" id="bulan" class="form-control" >
+									<option <?php if($month=='januari') echo 'selected';?> value="januari">Januari</option>
+									<option <?php if($month=='februari') echo 'selected';?> value="februari">Februari</option>
+									<option <?php if($month=='maret') echo 'selected';?> value="maret">Maret</option>
+									<option <?php if($month=='april') echo 'selected';?> value="april">April</option>
+									<option <?php if($month=='mei') echo 'selected';?> value="mei">Mei</option>
+									<option <?php if($month=='juni') echo 'selected';?> value="juni">Juni</option>
+									<option <?php if($month=='juli') echo 'selected';?> value="juli">Juli</option>
+									<option <?php if($month=='agustus') echo 'selected';?> value="agustus">Agustus</option>
+									<option <?php if($month=='september') echo 'selected';?> value="september">September</option>
+									<option <?php if($month=='oktober') echo 'selected';?> value="oktober">Oktober</option>
+									<option <?php if($month=='nopember') echo 'selected';?> value="nopember">Nopember</option>
+									<option <?php if($month=='desember') echo 'selected';?> value="desember">Desember</option>
+								</select>
+							
+							</div>
+							<div style="display:inline-block">
+							<label>Tahun</label>
+								<select name="year" id="year" class="form-control" >
+									<?php for($ii=2000;$ii<=date("Y");$ii++):?>
+										<option <?php if($ii == $year ): echo 'selected';  endif;?> value="<?php echo $ii;?>"><?php echo $ii;?></option>
+									<?php endfor;?> 
+								</select>
+							</div>
+							
+							<div style="display:inline-block">
+							 <input type="submit" class="btn btn-primary btn-lg" value="<?php echo lang('Refresh');?>">
+							</div>
+							
+							</div>
+							</form>
+                        </div>
+						
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+
+<div class="col-lg-12">
+<?php if(count($rangking) > 1){ ?>
+<section class="main">		
+	<h2>VISUAL LINE BAR GRAPH</h2>
+	<input style="display:none" type="radio" name="resize-graph" id="graph-normal" checked="checked" /><label style="display:none" for="graph-normal">Normal</label>
+	<input style="display:none" type="radio" name="paint-graph" id="graph-blue" checked="checked" /><label style="display:none" for="graph-blue">Blue</label>
+	<input style="display:none" type="radio" name="fill-graph" id="f-product1" checked="checked" /><label style="display:none" for="f-product1">Product 1</label>
+	
+	<ul class="graph-container">
+		<?php foreach($data as $dataX):?>
+		<li>
+			<span><?php echo $dataX['name'];?></span>
+			<div class="bar-wrapper">
+				<div class="bar-container">
+					<div class="bar-background"></div>
+					<div class="bar-inner" style="height: <?php echo ($dataX['point'] * 10);?>%; bottom: 0;"><?php echo ($dataX['point'] * 10);?></div>
+					<div class="bar-foreground"></div>
+				</div>
+			</div>
+		</li>
+		<?php endforeach;?>
+		<li>
+			<ul class="graph-marker-container">
+				<li style="bottom:10%;"><span>1</span></li>
+				<li style="bottom:20%;"><span>2</span></li>
+				<li style="bottom:30%;"><span>3</span></li>
+				<li style="bottom:40%;"><span>4</span></li>
+				<li style="bottom:50%;"><span>5</span></li>
+				<li style="bottom:60%;"><span>6</span></li>
+				<li style="bottom:70%;"><span>7</span></li>
+				<li style="bottom:80%;"><span>8</span></li>
+				<li style="bottom:90%;"><span>9</span></li>
+				<li style="bottom:100%;"><span>10</span></li>
+			</ul>
+		</li>
+	</ul>
+	</section>
+<?php } ?>
+</div>
+</div>
+<!-- /.row -->

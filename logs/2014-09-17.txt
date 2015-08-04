@@ -1,0 +1,59 @@
+Time : 18:59:55
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1,1' at line 5
+Raw SQL : SELECT sub_criteria.id, criteria.id AS parent_id, criteria.criteria AS criteria
+			FROM `criteria`
+			INNER JOIN `sub_criteria` 
+			ON criteria.id = sub_criteria.parent_id 
+			WHERE sub_criteria.parent_id =  LIMIT 1,1
+
+Time : 18:53:08
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT sub_criteria.id, criteria.id AS parent_id, criteria.criteria AS criteria
+			FROM `criteria`
+			INNER JOIN `sub_criteria` 
+			ON criteria.id = sub_criteria.parent_id 
+			WHERE sub_criteria.parent_id= :parent_id
+
+Time : 18:52:40
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT sub_criteria.id, criteria.id AS parent_id, criteria.criteria AS criteria
+			FROM `criteria`
+			INNER JOIN `sub_criteria` 
+			ON criteria.id = sub_criteria.parent_id 
+			WHERE sub_criteria.parent_id= :parent_id
+
+Time : 18:51:15
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT sub_criteria.id, criteria.id AS parent_id, criteria.criteria AS criteria
+			FROM `criteria`
+			INNER JOIN `sub_criteria` 
+			ON criteria.id = sub_criteria.parent_id 
+			WHERE sub_criteria.parent_id= :parent_id
+
+Time : 18:49:46
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.parent_id' at line 5
+Raw SQL : SELECT sub_criteria.id, criteria.id AS parent_id, criteria.criteria AS criteria
+			FROM `criteria`
+			INNER JOIN `sub_criteria` 
+			ON criteria.id = sub_criteria.parent_id 
+			WHERE sub_criteria.parent_id= :sub_criteria.parent_id
+
+Time : 18:23:46
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'parent_id' in 'field list'
+Raw SQL : INSERT INTO criteria (parent_id,kode,value,factor) VALUES (:parent_id,:kode,:value,:factor)
+
+Time : 18:23:20
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sub_criteria' in 'field list'
+Raw SQL : INSERT INTO criteria (sub_criteria,parent_id,kode,value,factor) VALUES (:sub_criteria,:parent_id,:kode,:value,:factor)
+
+Time : 18:22:52
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sub_criteria' in 'field list'
+Raw SQL : INSERT INTO criteria (sub_criteria,parent_id,kode,value,factor) VALUES (:sub_criteria,:parent_id,:kode,:value,:factor)
+
+Time : 18:21:39
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sub_criteria' in 'field list'
+Raw SQL : INSERT INTO criteria (sub_criteria,parent_id,kode,value,factor) VALUES (:sub_criteria,:parent_id,:kode,:value,:factor)
+
+Time : 18:20:17
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sub_criteria' in 'field list'
+Raw SQL : INSERT INTO criteria (sub_criteria,parent_id,kode,value,factor) VALUES (:sub_criteria,:parent_id,:kode,:value,:factor)

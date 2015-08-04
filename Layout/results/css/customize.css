@@ -1,0 +1,154 @@
+ a:hover{text-decoration:none;}
+header{
+	background: #303030;
+}
+.sw_tb{
+	float: right;
+	height: auto;
+	right: 10px;
+	position: relative;
+	padding-top: 5px;
+}
+
+header .sw_tb li{ list-style:none;}
+header .sw_tb li a{color:#fff;}
+header .sw_tb li a:hover{ color:yellow;}
+
+body {
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  color: #000000;
+}
+h2.entry-title {
+	margin-bottom: 35px;
+}
+.entry-content p.text {line-height:200%;margin-top:45px;}
+.entry-content p.keywords {margin-top:35px;}
+#articleFullText {margin-top:30px;}
+span.date {
+	float: right;
+}
+.entry-content {clear:both}
+footer {
+  position: absolute;
+  bottom: 0px;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  min-height:50px;
+  color:#fff;
+  padding:15px 0;
+}
+.border-bottom {
+  border-bottom: 1px solid #E4E2E2;
+  min-height: 30px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+div#navbar {
+  margin-left: 0px;
+}
+.h3, h3 {
+  font-size: 24px;
+  margin: 0;
+}
+h3.r {
+  font-size: 18px;
+}
+a {
+  color: #0453FF;
+  text-decoration: none;
+}
+.a, cite, cite a:link, cite a:visited, .cite, .cite:link, #_bGc>i, .bc a:link {
+  color: #006621;
+  font-style: normal;
+}
+.starter-template{
+	padding:20px 0;
+}
+#search {
+    float: right;
+    margin-top: 9px;
+
+}
+
+ol {
+  display: block;
+  list-style: none;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
+  padding: 0;
+  margin-left: 0px;
+}
+.g {
+  margin-top: 0;
+  margin-bottom: 23px;
+}
+.search {
+    padding: 5px 0;
+    height: 30px;
+    position: relative;
+    left: ;
+    float: left;
+    line-height: 22px;
+	width:100%;
+}
+.rc {
+  position: relative;
+}
+#res h3.r {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#tads a, #tadsb a, #res a, #rhs a, #taw a {
+  text-decoration: none;
+}
+.rc .s {
+  line-height: 18px;
+}
+#ires .kv {
+  height: 17px;
+  line-height: 16px;
+}
+._Rm {
+  font-size: 14px;
+}
+.action-menu {
+  display: inline;
+  margin: 0 3px;
+  position: relative;
+  -webkit-user-select: none;
+}
+.st {
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.search input {
+	float: Left;
+	width:100%;
+	-webkit-transition: all 0.7s ease-in-out;
+	-moz-transition: all 0.7s ease-in-out;
+	-o-transition: all 0.7s ease-in-out;
+	transition: all 0.7s ease-in-out;
+	height: 30px;
+	line-height: 18px;
+	padding: 0 10px;
+	border-radius:1px;
+}
+
+.search:hover input, .search input:focus {
+	margin-left: 0px;
+}
+
+.btn {
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    border-radius:1px;
+}

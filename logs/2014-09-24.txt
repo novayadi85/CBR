@@ -1,0 +1,132 @@
+Time : 16:21:18
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sub_criteria.criteria_id' in 'on clause'
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria , criteria.id AS criteria_id 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		inner join criteria ON criteria.id = sub_criteria.criteria_id 
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month = 'februari' GROUP BY criteria.id
+
+Time : 16:20:51
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'jpon criteria ON criteria.id = sub_criteria.criteria_id 
+		WHERE profiles.offic' at line 9
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria , criteria.id AS criteria_id 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		inner jpon criteria ON criteria.id = sub_criteria.criteria_id 
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month = 'februari' GROUP BY criteria.id
+
+Time : 15:57:00
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'februari' in 'where clause'
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month = februari
+
+Time : 15:55:33
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month =
+
+Time : 15:55:14
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month =
+
+Time : 15:54:36
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month =
+
+Time : 15:54:03
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month =
+
+Time : 15:48:22
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.sub_criteria 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = ' at line 4
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name 
+		sub_criteria.sub_criteria 
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		WHERE `office_id` = 1
+
+Time : 14:09:46
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'office_id' in 'where clause'
+Raw SQL : SELECT * FROM offices WHERE `office_id` = 1
+
+Time : 14:09:25
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `office_id` = 1' at line 1
+Raw SQL : SELECT * FROM  WHERE `office_id` = 1
+
+Time : 14:08:51
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `office_id` = 1' at line 1
+Raw SQL : SELECT * FROM  WHERE `office_id` = 1
+
+Time : 14:08:19
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `office_id` = 1' at line 1
+Raw SQL : SELECT * FROM  WHERE `office_id` = 1
+
+Time : 13:54:12
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'profile_persentase' in 'field list'
+Raw SQL : INSERT INTO profiles_option (profile_id,sub_criteria_id,profile_persentase,profile_value) VALUES (:profile_id,:sub_criteria_id,:profile_persentase,:profile_value)
+
+Time : 13:44:26
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_tanovi`.`profiles_option`, CONSTRAINT `profiles_option_ibfk_3` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Raw SQL : INSERT INTO profiles_option (profile_id,sub_criteria_id,profile_value) VALUES (:profile_id,:sub_criteria_id,:profile_value)
+
+Time : 13:33:01
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'month' in 'field list'
+Raw SQL : INSERT INTO profiles (month,year,office_id) VALUES (:month,:year,:office_id)
+
+Time : 13:29:32
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'month' in 'field list'
+Raw SQL : INSERT INTO profiles (month,year,office_id) VALUES (:month,:year,:office_id)

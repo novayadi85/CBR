@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Cron>
+  <Detail Author="Novayadi">
+    <start>2012-10-12</start>
+    <end>2012-09-30</end>
+    <interval>1</interval>
+  </Detail>
+</Cron>

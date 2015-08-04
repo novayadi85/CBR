@@ -1,0 +1,35 @@
+Time : 09:00:38
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851055' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address,photo) VALUES (:nim,:name,:address,:photo)
+
+Time : 09:00:31
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851055' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address,photo) VALUES (:nim,:name,:address,:photo)
+
+Time : 08:59:59
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851055' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address,photo) VALUES (:nim,:name,:address,:photo)
+
+Time : 08:59:41
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851055' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address,photo) VALUES (:nim,:name,:address,:photo)
+
+Time : 08:59:17
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851055' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address,photo) VALUES (:nim,:name,:address,:photo)
+
+Time : 08:58:27
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851055' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address,photo) VALUES (:nim,:name,:address,:photo)
+
+Time : 08:55:44
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851055' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address,photo) VALUES (:nim,:name,:address,:photo)
+
+Time : 07:55:14
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO lecturers (nip,name,address,photo) VALUES (:nip,:name,:address,:photo)
+
+Time : 07:54:55
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO lecturers (nip,name,address,photo) VALUES (:nip,:name,:address,:photo)

@@ -1,0 +1,54 @@
+Time : 15:07:55
+SQLSTATE[HY000] [1049] Unknown database 'tanovi_db'
+
+Time : 12:56:46
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:47:46
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:46:54
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:46:34
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:46:25
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:44:00
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:43:12
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:42:39
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:41:46
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:14:10
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM `sub_criteria` WHERE `parent_id` =
+
+Time : 09:12:58
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 09:12:19
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM profiles WHERE `office_id` =
+
+Time : 08:21:39
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * FROM `sub_criteria` WHERE `parent_id` =

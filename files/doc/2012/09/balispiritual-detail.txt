@@ -1,0 +1,17 @@
+http://balispiritualshop.com/
+
+
+user : user balispir_root 
+password i7hnziqvhh5z. 
+db : balispir_db
+
+cpanel : user name balispir pass palapa12
+
+PrestaShop has been successfully installed at :
+http://www.balispiritualshop.com
+Administrative URL : http://www.balispiritualshop.com/admin1234
+
+login
+
+novayadi.komang@gmail.com
+admin1234

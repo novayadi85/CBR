@@ -1,0 +1,21 @@
+body{ font-size:12px;}
+ a:hover{text-decoration:none;}
+header{
+	background: #303030;
+	margin-bottom: 30px;
+}
+.sw_tb{
+	float: right;
+	height: auto;
+	right: 10px;
+	position: relative;
+	padding-top: 5px;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	background: #303030;
+	width: 100%;
+}
+header .sw_tb li{ list-style:none;}
+header .sw_tb li a:hover{ color:yellow;}

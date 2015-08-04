@@ -1,0 +1,25 @@
+Time : 12:18:10
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'profiles_option.profile_persentase' in 'field list'
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.id AS option_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria , criteria.id AS criteria_id ,sub_criteria.id as sub_criteria_id
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		inner join criteria ON criteria.id = sub_criteria.parent_id  
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month = 'januari'
+
+Time : 12:17:08
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'profiles_option.id' in 'field list'
+Raw SQL : SELECT profiles.year,profiles.month,
+		profiles.id AS profile_id , profiles_option.id AS option_id , profiles_option.sub_criteria_id, profiles_option.profile_persentase , 
+		profiles_option.profile_value, offices.name , 
+		sub_criteria.sub_criteria , criteria.id AS criteria_id ,sub_criteria.id as sub_criteria_id
+		FROM profiles inner join profiles_option 
+		ON profiles.id = profiles_option.profile_id
+		inner join offices ON profiles.office_id = offices.id 
+		inner join sub_criteria ON profiles_option.sub_criteria_id = sub_criteria.id 
+		inner join criteria ON criteria.id = sub_criteria.parent_id  
+		WHERE profiles.office_id = 1 AND profiles.year = 2014 AND profiles.month = 'januari'

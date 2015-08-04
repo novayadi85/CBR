@@ -1,0 +1,95 @@
+	<div class="container">	
+		<div id="" class="row">
+			<div class="col-md-6">
+				<a href="<?php echo site('');?>" class="b_logoArea" h="ID=SERP,5037.1"><h5 class="b_logo" data-bm="1">Pencarian Jurnal dengan Metode Case Based Reasoning</h5></a>
+				<form role="form" method="post" action="<?php echo site('search');?>">
+				<div class="search">
+					<input type="text" name="q" class="form-control input-sm" maxlength="64" placeholder="Search" value="<?php echo (isset($request['q']))? $request['q']:'' ?>" />
+					<button type="submit" class="btn btn-primary btn-sm">Search</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="full-width border-bottom">	
+		<div class="container">	
+			<div class="row">
+				<div class="col-md-12">
+					<div id="navbar"><span class="sb_count" data-bm="4"><?php if(!empty($result)) echo count($result); else echo "0" ;?> hasil</span> dalam <span class="sb_count" data-bm="4"><?php echo $total;?> detik </span><span><?php if($cache) echo 'dari pencarian sebelumnya.';?></span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<?php if(!empty($result)):?>
+			<ol id="rso">
+				<div class="srg">
+					
+					<?php foreach($result as $key => $value):?>
+					<li class="g">
+					<!--m-->
+						<div class="rc" data-hveid="67">
+							<h3 class="r"><a href="<?php echo site('search/view/'.$value['id_jurnal']);?>" ><?php echo $looping[$key]['title'];?></a></h3>
+							<div class="s">
+								<div>
+									<div class="f kv _SWb" style="white-space:nowrap">
+										<cite class="_Rm">Oleh : <?php echo $looping[$key]['nim'];?></cite>
+										
+									</div>
+									<?php //$html = $this->library('basic');?>
+									<?php $words = $html->myTruncate($looping[$key]['text'],100); ?>
+									
+									<span class="st">
+									<?php if(!empty($words)): ?>
+									<?php echo $html->highlight($words,explode(" ",$request['q']));?>
+									<?php else : ?>
+									Deskripsi untuk dokumen ini tidak tersedia 
+									<?php endif; ?>
+									</span>
+									
+								</div>
+							</div>
+						</div>
+					</li>
+					<?php endforeach;?>
+				</div>
+			</ol>
+			<?php else :?>
+			<ol id="rso">
+				<div class="srg">
+					<p>Tidak ditemukan hasil dalam pencarian.</p>
+				</div>
+			</ol>
+			<?php endif;?>
+			<?php if(DEBUG)?>
+			<pre><?php print_r($debug);?></pre>
+		</div>
+	</div>
+</div>
+<div class="container">	
+	<div id="" class="row">
+		<div class="col-md-12">
+			<nav>
+			  <ul class="pagination">
+				<li>
+				  <a href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				  </a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+				  <a href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				  </a>
+				</li>
+			  </ul>
+			</nav>
+		</div>
+	</div>
+</div>

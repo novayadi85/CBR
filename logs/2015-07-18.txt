@@ -1,0 +1,7 @@
+Time : 07:55:29
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851054' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address) VALUES (:nim,:name,:address)
+
+Time : 07:55:05
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '851054' for key 'PRIMARY'
+Raw SQL : INSERT INTO students (nim,name,address) VALUES (:nim,:name,:address)

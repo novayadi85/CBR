@@ -1,0 +1,23 @@
+Time : 09:39:59
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO lecturers (nip,name,address) VALUES (:nip,:name,:address)
+
+Time : 09:39:32
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO lecturers (nip,name,address,photo) VALUES (:nip,:name,:address,:photo)
+
+Time : 09:37:08
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO lecturers (nip,name,address,photo) VALUES (:nip,:name,:address,:photo)
+
+Time : 09:34:15
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO lecturers (nip,name,address,photo) VALUES (:nip,:name,:address,:photo)
+
+Time : 09:32:03
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO lecturers (nip,name,address,photo) VALUES (:nip,:name,:address,:photo)
+
+Time : 05:45:07
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_cbr.criteria' doesn't exist
+Raw SQL : SELECT * FROM criteria
