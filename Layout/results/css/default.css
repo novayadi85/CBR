@@ -145,3 +145,22 @@ a:hover {
 	content: "\f060";
 }
 
+.toolkit {
+	margin-top: 15px;
+    padding-top: 15px;
+	left: -25px;
+    position: relative;
+}
+.toolkit span.tools {
+    padding: 20px 0;
+}
+.aTools {
+	cursor:pointer;
+	padding:5px;
+}
+.tool-option {
+    margin-top: 50px;
+}
+i.fa.fa-cog {
+    font-size: 20px;
+}

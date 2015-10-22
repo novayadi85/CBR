@@ -1,6 +1,8 @@
 <?php 
 class Home extends BaseController{
-
+	
+	
+	
 	function index(){
 		$users = array();
 		// $users = array(

@@ -1,13 +1,42 @@
 	<div class="container">	
 		<div id="" class="row">
+			<form role="form" method="post" action="<?php echo site('search');?>">
+				
 			<div class="col-md-6">
-				<a href="<?php echo site('');?>" class="b_logoArea" h="ID=SERP,5037.1"><h5 class="b_logo" data-bm="1">Pencarian Jurnal dengan Metode Case Based Reasoning</h5></a>
-				<form role="form" method="post" action="<?php echo site('search');?>">
+				<a href="<?php echo site('search');?>" class="b_logoArea" h="ID=SERP,5037.1"><h5 class="b_logo" data-bm="1">Pencarian Jurnal dengan Metode Case Based Reasoning</h5></a>
 				<div class="search">
-					<input type="text" name="q" class="form-control input-sm" maxlength="64" placeholder="Search" value="<?php echo (isset($request['q']))? $request['q']:'' ?>" />
+					<input type="text" name="q" class="form-control input-sm" maxlength="64" placeholder="Masukkan kata kunci" value="<?php echo (isset($request['q']))? $request['q']:'' ?>" />
 					<button type="submit" class="btn btn-primary btn-sm">Search</button>
+					
 				</div>
-				</form>
+				
+				<div class="tool-option" <?php if (!isset($request['dosen'])) :  ?>style="display:none" <?php endif;?>>
+				
+				<select name="jenis">
+					<option>Jenis Jurnal</option>
+					<option value='spk'>SPK</option>
+					<option value='sispar'>Sistem pakar</option>
+				</select>
+				<select name="tahun">
+					<option>Tahun</option>
+					<?php for($kk=2000;$kk<=date('Y');$kk++){
+							echo "<option value='{$kk}'>{$kk}</option>";
+						
+					}?>
+				</select>
+				<select name="dosen">
+					<option>Dosen Pembimbing</option>
+					<?php foreach($lecturer as $key => $value):?>
+						<option <?php if(in_array($value['id_lecturer'],$arr)) echo 'SELECTED'; ?> value="<?php echo $value['id_lecturer'];?>"><?php echo $value['name'];?></option>
+					<?php endforeach;?>
+				</select>
+				</div>
+			</div>
+			</form>
+			<div class="col-md-6">
+				<div class="toolkit">
+					<a class="aTools" onclick="toggleTool()"><span  class="tools"><i class="fa fa-cog"></i></span></a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -31,7 +60,11 @@
 					<li class="g">
 					<!--m-->
 						<div class="rc" data-hveid="67">
-							<h3 class="r"><a href="<?php echo site('search/view/'.$value['id_jurnal']);?>" ><?php echo $looping[$key]['title'];?></a></h3>
+							<h3 class="r">
+							<a data-toggle="modal" href="<?php echo site('search/detail/'.$looping[$key]['id_jurnal']);?>" data-target="#myModal"><?php echo $looping[$key]['title'];?></a>
+							</h3>
+							
+							
 							<div class="s">
 								<div>
 									<div class="f kv _SWb" style="white-space:nowrap">
@@ -39,7 +72,7 @@
 										
 									</div>
 									<?php //$html = $this->library('basic');?>
-									<?php $words = $html->myTruncate($looping[$key]['text'],100); ?>
+									<?php $words = $html->myTruncate(trim($looping[$key]['text']),100); ?>
 									
 									<span class="st">
 									<?php if(!empty($words)): ?>
@@ -59,7 +92,8 @@
 			<?php else :?>
 			<ol id="rso">
 				<div class="srg">
-					<p>Tidak ditemukan hasil dalam pencarian.</p>
+					<p>Tidak ditemukan hasil dalam pencarian, Silakan masukkan kata kunci.</p>
+					<img height="100%" src="<?php echo site('404.gif');?>"/>
 				</div>
 			</ol>
 			<?php endif;?>
@@ -68,7 +102,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">	
+<?php /** <div class="container">	
 	<div id="" class="row">
 		<div class="col-md-12">
 			<nav>
@@ -93,3 +127,10 @@
 		</div>
 	</div>
 </div>
+**/?>
+
+<script>
+function toggleTool(){
+	 $( ".tool-option" ).toggle();
+}
+</script>

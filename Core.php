@@ -1,7 +1,7 @@
 <?php 
 Class Core {
 	public $path = '/new-cbr/';
-	public $base_url = "http://localhost:8080";
+	public $base_url = "http://localhost";
 	public $layout = "Layout";
 	
 	public function __construct(){

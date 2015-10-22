@@ -6,10 +6,11 @@ class Lecturer extends BaseController{
 	function __construct(){
 		parent::__construct();
 		$this->data['layout'] = 'adminhtml';
+		$this->data['header'] = 'Data Dosen';
 	}
 	
 	function add($request=null){
-		$this->data['title'] = "ADD LECTURER";
+		$this->data['title'] = "Tambah Data Dosen";
 		if(!is_null($request))
 			$this->data['request'] = $request;
 		$this->view('lecturer/admin/add',$this->data);
@@ -24,12 +25,12 @@ class Lecturer extends BaseController{
 			$LecturerModel->Find();
 			$this->data['request'] = $LecturerModel->variables;
 		}
-		$this->data['title'] = "Add Lecturer";
+		$this->data['title'] = "Tambah Data Dosen";
 		$this->view('lecturer/admin/edit',$this->data);
 	}
 
 	function index(){
-		$this->data['title'] = "LECTURER";
+		$this->data['title'] = "Data Dosen";
 		$criterias = $this->loadmodel('LecturerModel');
 		$this->data['lecturers'] = $criterias->all();
 		$this->view('lecturer/admin/index',$this->data);

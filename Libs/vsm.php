@@ -52,7 +52,9 @@ Class vsm {
 					}
 			}
 
-			return array('docCount' => $docCount, 'dictionary' => $dictionary);
+			$return =  array('docCount' => $docCount, 'dictionary' => $dictionary);
+			//$this->pr($return);
+			return $return;
 	}
 
 	function getKeyword($array) {

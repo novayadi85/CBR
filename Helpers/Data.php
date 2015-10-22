@@ -1,4 +1,5 @@
 <?php 
+require_once('Language.php');
 
 function redirect($location=''){
 	
@@ -16,10 +17,15 @@ function site($dir){
 }
 
 function lang($var=''){
-	return $var;
+	return __($var);
 }
 
 function __($var=''){
+	global $lang;
+	$nvar = strtolower($var);
+	if(isset($lang[$nvar])){
+		return $lang[$nvar];
+	}
 	return $var;
 }
 

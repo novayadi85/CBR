@@ -9,7 +9,13 @@ header{
 	position: relative;
 	padding-top: 5px;
 }
-
+.logo-stmik {
+    position: absolute;
+    left: 0;
+}
+.logo-stmik img{
+	height:75px;
+}
 header .sw_tb li{ list-style:none;}
 header .sw_tb li a{color:#fff;}
 header .sw_tb li a:hover{ color:yellow;}
@@ -151,4 +157,35 @@ ol {
     right: 0;
     top: 5px;
     border-radius:1px;
+}
+.judul-stmik{
+	display:none;
+}
+@media (max-width: 768px){
+	.logo-stmik {
+		position: relative;
+		left: 0;
+	}
+	.logo-stmik img {
+		height: 75px;
+		display: inline-block;
+		text-align: left;
+		float: left;
+	}
+	.judul-stmik{
+		display:block;
+	}
+	.judul-stmik {
+		float: left;
+		margin-left: 15px;
+	}
+	.logo-stmik {
+		display: block;
+		border-bottom: 1px solid;
+		height: auto;
+		overflow: hidden;
+	}
+}
+.clear {
+	clear:both;
 }

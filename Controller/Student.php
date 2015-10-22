@@ -6,10 +6,12 @@ class Student extends BaseController{
 	function __construct(){
 		parent::__construct();
 		$this->data['layout'] = 'adminhtml';
+		$this->data['header'] = 'Data Mahasiswa';
+		
 	}
 	
 	function add($request=null){
-		$this->data['title'] = "ADD student";
+		$this->data['title'] = "Tambah Data Mahasiswa";
 		if(!is_null($request))
 			$this->data['request'] = $request;
 		$this->view('student/admin/add',$this->data);
@@ -23,12 +25,12 @@ class Student extends BaseController{
 			$StudentModel->Find();
 			$this->data['request'] = $StudentModel->variables;
 		}
-		$this->data['title'] = "Add Student";
+		$this->data['title'] = "Ubah Data Mahasiswa";
 		$this->view('student/admin/edit',$this->data);
 	}
 
 	function index(){
-		$this->data['title'] = "student";
+		$this->data['title'] = "Data Mahasiswa";
 		$students = $this->loadmodel('StudentModel');
 		$this->data['students'] = $students->all();
 		$this->view('student/admin/index',$this->data);

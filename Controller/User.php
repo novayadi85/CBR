@@ -6,18 +6,20 @@ class User extends BaseController{
 		
 		parent::__construct();
 		$this->data['layout'] = 'adminhtml';
+		$this->data['header'] = 'Pengguna';
+		
 	}
 	
 	function index(){
 		$users = $this->loadmodel('UserModel');
-		$this->data['title'] = "Management users";
-		$this->data['header'] = 'USERS';
+		$this->data['title'] = "Data Pengguna";
+		$this->data['header'] = 'Pengguna';
 		$this->data['users'] = $users->all();
 		$this->view('user/index',$this->data);
 	}
 	
 	function invalid(){
-		$this->data['title'] = "User Login";
+		$this->data['title'] = "Pengguna";
 		$this->data['layout'] = 'login';		
 		$users = $this->loadmodel('UserModel');
 		$this->view('user/login',$this->data);

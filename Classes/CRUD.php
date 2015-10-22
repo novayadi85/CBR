@@ -101,9 +101,10 @@ class Crud {
 		return $this->db->query("SELECT * FROM " . $this->table);
 	}
 	
-	public function IN($ids){
+	public function IN($ids,$fk=null){
 		$ids = implode(",",$ids);
-		 //echo "SELECT * FROM " . $this->table ." WHERE " . $this->pk . " IN ($ids)";	
+		if(!empty($fk)) $this->pk = $fk;
+		//echo "SELECT * FROM " . $this->table ." WHERE " . $this->pk . " IN ($ids)";	
 		if(!empty($ids)) 
 		return $this->db->query("SELECT * FROM " . $this->table ." WHERE " . $this->pk . " IN ($ids)");
 	}

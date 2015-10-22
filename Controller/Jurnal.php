@@ -6,6 +6,7 @@ class Jurnal extends BaseController{
 	function __construct(){
 		parent::__construct();
 		$this->data['layout'] = 'adminhtml';
+		$this->data['header'] = 'Data Jurnal Mahasiswa';
 	}
 	
 	function add($request = false){
@@ -13,7 +14,9 @@ class Jurnal extends BaseController{
 			$this->data['request'] = $request ;
 		$lecturer = $this->loadmodel('LecturerModel');
 		$this->data['lecturer'] =  $lecturer->all();
-		$this->data['title'] = "Add Jurnal";
+		$student = $this->loadmodel('StudentModel');
+		$this->data['student'] =  $student->all();
+		$this->data['title'] = "Tambah Data Jurnal Mahasiswa";
 		$this->view('jurnal/admin/add',$this->data);
 	}
 	
@@ -29,12 +32,12 @@ class Jurnal extends BaseController{
 		$lecturer = $this->loadmodel('LecturerModel');
 		$this->data['lecturer'] =  $lecturer->all();
 		//print_r($this->data)	;
-		$this->data['title'] = "Add Jurnal";
+		$this->data['title'] = "Ubah Data Jurnal Mahasiswa";
 		$this->view('jurnal/admin/edit',$this->data);
 	}
 
 	function index(){
-		$this->data['title'] = "Jurnal";
+		$this->data['title'] = "Data Jurnal Mahasiswa";
 		$jurnal = $this->loadmodel('JurnalModel');
 		$this->data['Model'] =  $this->loadmodel('LecturerModel');
 		$this->data['jurnals'] = $jurnal->all();

@@ -6,10 +6,17 @@ class Search extends BaseController{
 		parent::__construct();
 		$this->data['layout'] = 'results';
 	}
-	function index(){
+	
+	function ajax(){		
+		$this->data['layout'] = 'ajax';
+		$this->cari();
+		$this->view('search/result',$this->data);
+	}
+	
+	function cari(){
 		$start = microtime(true);
 		$request = Core::Request();
-		//print_r($request);
+		print_r($request);
 		if(empty($request['q'])){
 			$request['q'] = '';
 		}
@@ -31,19 +38,41 @@ class Search extends BaseController{
 			$this->data['cache'] = true;
 			$results['result'] = $problems;
 		} else if(count($terms) > 1){
-			$problems = $problemModel->query("SELECT * FROM `problems` GROUP BY term ORDER BY `problems`.`id_problem` DESC");
-			$solution = array();
-			foreach($problems as $problem){			
-				$words = str_replace('.',' ',$problem['term']);
-				$words = explode(' ',$words);
-				$solution[$problem['id_problem']] = $words;
-				$words = '';
-			}
 			
-			$results = $e->gethasil($term,$solution);
-			if(!empty($results['result'])){
+			$od_problems = $problemModel->query("SELECT * FROM `problems` WHERE `term` = '{$term}' GROUP BY term ORDER BY `problems`.`id_problem` DESC");
+			$results = $od_problems[0];
+			$this->data['created'] = $results['created'];		
+			//echo 'tes';$this->pre($results);
+			$this->data['result'] = unserialize($results['result']);
+			$this->data['looping'] = unserialize($results['result']);
+			$this->data['cache'] = true;
+			$results['result'] = $od_problems;
+			
+			if(empty($results['result'])){
+				$old = false;
+				$problems = $problemModel->query("SELECT * FROM `problems` GROUP BY term ORDER BY `problems`.`id_problem` DESC");
+				$solution = array();
+				foreach($problems as $problem){			
+					$words = str_replace('.',' ',$problem['term']);
+					$words = explode(' ',$words);
+					$solution[$problem['id_problem']] = $words;
+					$words = '';
+				}
+				
+				$results = $e->gethasil($term,$solution);
+				//echo 'testt';
+			} else {
+				$old = true;
+				
+			}
+			// echo '<pre>';
+			// print_r($results);
+			// echo '</pre>';
+			
+			if(!$old && !empty($results['result'])){
+				
 				$first_key = key($results['result']);
-				$persen = ($results['result'][$first_key] * 100);
+				//echo $persen = ($results['result'][$first_key] * 100);
 				if((int)$persen >= 90){
 					$problemModel = $this->loadmodel('SearchModel');
 					$problemModel->id_problem = $first_key;
@@ -54,6 +83,9 @@ class Search extends BaseController{
 					$this->data['result'] = unserialize($problemModel->variables['result']);
 					$this->data['cache'] = true;
 					$old_problems = $problemModel->query("SELECT * FROM `problems` WHERE `term` = '{$term}' GROUP BY term ORDER BY `problems`.`id_problem` DESC");
+					
+					//$this->pre($this->data);
+					
 					if(empty($old_problems[0])){
 						$solution = $this->loadmodel('SearchModel');
 						$solution->term = $request['q'];
@@ -69,7 +101,7 @@ class Search extends BaseController{
 					$error = true;
 				}
 			} else {
-				$error = true;
+				$error = false;
 			}
 		
 		} else {
@@ -80,20 +112,23 @@ class Search extends BaseController{
 			$error = true;
 		}
 		
-		if($error){
+		if($error && !$old){
+			
 			$this->data['cache'] = false;
 			$e = $this->library('pencarian');
 			$results = $e->gethasil($term);
+	
 			if(isset($results['result']) && !empty($results['result'])){
 				$this->data['result'] = $results['result'];
 				$this->data['total'] =  $results['total'];
 				$this->data['request'] =  $request;
 				$ids = array_keys($this->data['result']);
+				
 				$jurnal = $this->loadmodel('JurnalModel');
-				$looping = $jurnal->in(array_values($ids));
+				$looping = $jurnal->IN(array_values($ids),'nim');
 				$hasil = array();
 				foreach($looping as $key => $value){
-					$hasil[$value['id_jurnal']] = $value;
+					$hasil[$value['nim']] = $value;
 				}
 				$this->data['looping'] = $hasil;
 				
@@ -112,11 +147,20 @@ class Search extends BaseController{
 			
 			$this->data['title'] = "Hasil Baru";
 		}
-		//$this->pre($results);
+		
 		$this->data['debug'] =  $results['result'];
 		$this->data['total'] = round((microtime(true)-$start),3);
 		$this->data['request'] =  $request;
 		$this->data['html'] = $this->library('basic');
+		$lecturer = $this->loadmodel('LecturerModel');
+		$this->data['lecturer'] =  $lecturer->all();
+	}
+	
+	
+	function index(){
+		$this->cari();
+		
+		//$this->pre($this->data)	;
 		$this->view('search/result',$this->data);
 			
 	}
@@ -175,6 +219,7 @@ class Search extends BaseController{
 		$this->view('search/result',$this->data);
 	}
 	function detail(){
+		$this->data['layout'] = 'modal';
 		$request = Core::Request();
 		$params =  Core::Request();
 		

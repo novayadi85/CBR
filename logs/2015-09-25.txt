@@ -1,0 +1,11 @@
+Time : 06:56:01
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC' at line 1
+Raw SQL : SELECT * FROM `problems` WHERE term = 'magento aplikasi' DESC
+
+Time : 06:55:30
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'aplikasi  ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` WHERE term = magento aplikasi  ORDER BY `problems`.`id_problem` DESC
+
+Time : 06:55:09
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'aplikasi term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` WHERE term = magento aplikasi term ORDER BY `problems`.`id_problem` DESC

@@ -57,6 +57,8 @@ class pencarian{
 	
 	
 	function gethasil($_getTerm , $collections = null){
+		//print_r($_getTerm);
+		//print_r($collections);
 		$start = microtime(true);
 		$the_cache = FILE_DIR .'cache/temp/cache.txt';
 		file_put_contents($the_cache,(string) $_getTerm, FILE_APPEND | LOCK_EX);
@@ -66,7 +68,7 @@ class pencarian{
 		$vsm = new vsm();
 		
 		
-		$collection=array();
+		$collection= array();
 		$this->globals = $params;
 		foreach($this->globals as $q){
             $queryafter[$q] = $stemmer->Root($q);
@@ -82,24 +84,34 @@ class pencarian{
 		$matchDocs = array();
 		$docCount = count($index['docCount']);
 		$dictionary = $index['dictionary'];
-		//$this->pr($dictionary);
+		// $this->pre($dictionary);
 		foreach($dictionary as $word=>$array){
-			array_unshift($collection,$word);
+			//array_unshift($collection,$word);
+			$collection[] = $word;
 		}
-
-			foreach($collection as $qterm) {
-
-				   $entry = $index['dictionary'][$qterm];
-					foreach($entry['postings'] as $docID => $posting) {
-						$matchDocs[$docID][$qterm] += pow($posting['tf'] *
-							log(($docCount) / ($entry['df']), 10),2);
-							
-						$matchDocs[$docID][$qterm.'_q'] += $posting['tf'] *
-							log(($docCount) / ($entry['df']), 10);
-							 
-					}
+		if($docCount) $docCount = 2;
+		
+		//$this->pre($collection);
+		
+			foreach($collection as $key => $qterm) {
+				
+			$entry = $index['dictionary'][$qterm];
+			//echo $qterm . $this->pre($entry);
+			if(!empty( $entry)){
+				foreach($entry['postings'] as $docID => $posting) {
+					$matchDocs[$docID][$qterm] += pow($posting['tf'] *
+						log10(($docCount + 1 ) / ($entry['df'])), 2);
+						
+					$matchDocs[$docID][$qterm.'_q'] += $posting['tf'] *
+						log10(($docCount + 1 ) / ($entry['df']));
+					//echo $posting['tf'];	 
+					// $matchDocs[$docID][$qterm] =  2;
+					// $matchDocs[$docID][$qterm.'_q'] = 2;
+				}
 			}
-		//	$this->pre($matchDocs);
+					
+			}
+		    //$this->pre($matchDocs);
 			$sum = array();
 			foreach($query as $term){
             $term = strtolower($term);
@@ -123,7 +135,8 @@ class pencarian{
 				}
 			}
 			
-
+			//$this->pre($match);
+			
 			if(count($match)>=1){
 				
 				$keys = array_keys($matchDocs);

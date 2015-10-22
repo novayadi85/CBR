@@ -98,7 +98,7 @@
 						 </li>
 						<?php $parameter = Core::request();?>
                         <li>
-                            <a class="active" href="<?php echo site('/')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a class="active" href="<?php echo site('admin/')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         
 						<li>
@@ -114,9 +114,7 @@
 						<li>
                             <a class="<?php echo ($parameter['controller'] =='jurnal')? 'active' : ''; ?>" href="<?php echo site('jurnal/index')?>"><i class="fa fa-file"></i> <?php echo __('Jurnals');?></a>
                         </li>
-						<li>
-                            <a class="<?php echo ($parameter['controller'] =='report')? 'active' : ''; ?>" href="<?php echo site('report/index')?>"><i class="fa fa-list-alt"></i> <?php echo __('Reports');?></a>
-                        </li>
+						
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

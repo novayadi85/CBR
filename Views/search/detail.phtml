@@ -1,14 +1,3 @@
-<div class="container">	
-	<div id="" class="row">
-		<div class="col-md-12">
-			<ol class="breadcrumb">
-			  <li><a href="<?php echo site('');?>">Home</a></li>
-			  <li class="active"><?php print $jurnals[0]['title'] ?></li>
-			</ol>
-		</div>
-	</div>
-</div>
-
 <div class="container">
 	<div class="row">
 		<?php foreach($jurnals as $jurnal):?>
@@ -18,7 +7,7 @@
 				
 				<div class="hentry sevenup">
 					<h2 class="entry-title"><?php echo $jurnal['title']?></h2>
-					<p>Penulis : <a data-toggle="modal" data-target="#myModal" href="#"><?php echo $jurnal['name']?></a> , diposting tanggal <abbr class="published"><?php echo $jurnal['created']?></abbr></p>
+					<p>Penulis : <a class="showMe" href="#"><?php echo $jurnal['name']?></a> , diposting tanggal <abbr class="published"><?php echo $jurnal['created']?></abbr></p>
 					<div class="entry-content">
 						<h4>Abstract</h4>
 						<p class="text"><?php echo $jurnal['text']?>	</p>
@@ -35,51 +24,40 @@
 		</div>
 		<?php endforeach;?>
 	</div>
-</div>
-
-  <!-- Trigger the modal with a button -->
-  
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><?php echo $jurnals[0]['name'];?></h4>
-        </div>
-        <div class="modal-body">
-          <p><?php echo $jurnals[0]['address'];?>.</p>
-			<div class="row">
+	
+	<div class="row" id="temphide" style="display:none">
+        <div class="col-md-12"> 
+		<div class="row">
 		
 		<div class="col-md-12">
-			<div style="border: 1px solid;
+			
+			<div style="
 						width: 100%;
 						padding: 5px;
 						margin-bottom: 15px;">
-			<img style="width:40%;" src="<?php echo site('Media/photo/student/'.$jurnals[0]['photo'])?>">
+			<img style="width:auto;" src="<?php echo site('Media/photo/student/'.$jurnals[0]['photo'])?>">
 			</div>
 			<div class="detail-data">
 				<p><label>NIM</label><br>
 				<span><?php echo $jurnals[0]['nim'];?></span></p>
-				
+				<p><label>Alamat</label><br>
+				<span><?php echo $jurnals[0]['address'];?>.</span></p>
+			
 				<p><label>Tanggal lahir</label><br>
 				<span><?php echo $jurnals[0]['bod'];?></span></p>
 				
-				<p><label>Jurusan</label><br>
+				<?php /** <p><label>Jurusan</label><br>
 				<span><?php echo $jurnals[0]['jurusan'];?></span></p>
 				
 				<p><label>Jenjang Pendidikan</label><br>
 				<span><?php echo $jurnals[0]['jenjang'];?></span></p>
-				
+				**/?>
 			</div>
 		</div>
 		
 		</div>
-
+</div>
       </div>
-      
-    </div>
-  </div>
-  
+	
+</div>
+

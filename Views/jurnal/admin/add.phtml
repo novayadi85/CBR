@@ -11,8 +11,15 @@
 		<div class="col-lg-6">
 			<form enctype="multipart/form-data" role="form" method="post" action="<?php echo site('jurnal/save')?>">
 				<div class="form-group">
-					<label>NIM</label>
-					<input class="form-control" name="nim" value="<?php echo (isset($request['nim']))? $request['nim']:'' ?>">					
+					<label>NIM</label><br>
+					<!--<input class="form-control" name="nim" value="<?php echo (isset($request['nim']))? $request['nim']:'' ?>">					
+					-->
+					<select style="width:350px;"  class="chosen-select" name="nim" data-placeholder="Pilih Mahasiswa">
+						<option value="0">Pilih Mahasiswa..</option>
+						<?php foreach($student as $key => $value):?>
+						<option value="<?php echo $value['nim'];?>"><?php echo $value['nim'];?></option>
+						<?php endforeach;?>
+					</select>
 				</div>
 				
 				<div class="form-group">
@@ -24,11 +31,19 @@
 					<textarea class="form-control" name="abstract" ><?php echo (isset($request['abstract']))? $request['abstract']:'' ?></textarea>
 				</div>
 				<div class="form-group">
-					<label>Year</label>
-					<input class="form-control" name="year" value="<?php echo (isset($request['year']))? $request['year']:'' ?>">
+					<label>Year</label><br>
+					<!--<input class="form-control" name="year" value="<?php echo (isset($request['year']))? $request['year']:'' ?>">
+					-->
+					<select style="width:120px;"  class="chosen-select" name="year" data-placeholder="Pilih Mahasiswa">
+						<option value="2015">Pilih Tahun..</option>
+						<?php for($ii=1998;$ii<=2015;$ii++):?>
+						<option value="<?php echo $ii;?>"><?php echo $ii;?></option>
+						<?php endfor;?>
+					</select>
+				
 				</div>
 				<div class="form-group">
-					<label>Pembimbing</label>
+					<label>Pembimbing</label><br>
 					<select style="width:350px;" multiple class="chosen-select" name="lecturer_ids[]" data-placeholder="Select Your Options">
 						<option value="0">Pilih Dosen Pembimbing..</option>
 						<?php foreach($lecturer as $key => $value):?>
