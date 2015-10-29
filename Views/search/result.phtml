@@ -13,22 +13,35 @@
 				<div class="tool-option" <?php if (!isset($request['dosen'])) :  ?>style="display:none" <?php endif;?>>
 				
 				<select name="jenis">
-					<option>Jenis Jurnal</option>
+					<option value="0">Jenis Jurnal</option>
 					<option value='spk'>SPK</option>
 					<option value='sispar'>Sistem pakar</option>
 				</select>
 				<select name="tahun">
-					<option>Tahun</option>
-					<?php for($kk=2000;$kk<=date('Y');$kk++){
-							echo "<option value='{$kk}'>{$kk}</option>";
-						
-					}?>
+					<option value="0">Tahun</option>
+					<?php 
+					for($kk=2000;$kk<=date('Y');$kk++){
+							if(isset($request['tahun']) && $request['tahun'] == $kk){
+								$selected = "SELECTED";
+							}
+							echo "<option {$selected} value='{$kk}'>{$kk}</option>";
+						$selected = '';
+					}
+					?>
 				</select>
 				<select name="dosen">
-					<option>Dosen Pembimbing</option>
-					<?php foreach($lecturer as $key => $value):?>
-						<option <?php if(in_array($value['id_lecturer'],$arr)) echo 'SELECTED'; ?> value="<?php echo $value['id_lecturer'];?>"><?php echo $value['name'];?></option>
-					<?php endforeach;?>
+					<option value="0">Dosen Pembimbing</option>
+					<?php 
+					foreach($lecturer as $key => $value):?>
+						<?php 
+						if(isset($request['dosen']) && $request['dosen'] == $value['id_lecturer']){
+								$selected = "SELECTED";
+						}	
+						?>
+						<option <?php echo $selected;?> <?php if(in_array($value['id_lecturer'],$arr)) echo 'SELECTED'; ?> value="<?php echo $value['id_lecturer'];?>"><?php echo $value['name'];?></option>
+					<?php 
+					$selected = '';
+					endforeach;?>
 				</select>
 				</div>
 			</div>
@@ -93,7 +106,7 @@
 			<ol id="rso">
 				<div class="srg">
 					<p>Tidak ditemukan hasil dalam pencarian, Silakan masukkan kata kunci.</p>
-					<img height="100%" src="<?php echo site('404.gif');?>"/>
+					<!--<img height="100%" src="<?php echo site('404.gif');?>"/>-->
 				</div>
 			</ol>
 			<?php endif;?>

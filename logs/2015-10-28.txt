@@ -1,0 +1,31 @@
+Time : 15:06:22
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `tahun` = 2002 GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` AND `tahun` = 2002 GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 15:05:52
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `tahun` = 2002 GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` AND `tahun` = 2002 GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 15:05:11
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `tahun` = '2002' GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` AND `tahun` = '2002' GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 15:04:27
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `tahun` = '2006' GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` AND `tahun` = '2006' GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 15:02:12
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `tahun` = '2012' GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` AND `tahun` = '2012' GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 15:01:40
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `tahun` = '2004' GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` AND `tahun` = '2004' GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 14:56:35
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `lecturer_ids` LIKE '%%' GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` AND `lecturer_ids` LIKE '%%' GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 14:17:40
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'term' in 'group statement'
+Raw SQL : SELECT * FROM `jurnals` WHERE `YEAR` = '2012' AND `lecturer_ids` LIKE '%1%' GROUP BY term ORDER BY `problems`.`id_problem` DESC

@@ -16,12 +16,28 @@ class Search extends BaseController{
 	function cari(){
 		$start = microtime(true);
 		$request = Core::Request();
-		print_r($request);
+		//print_r($request);
 		if(empty($request['q'])){
 			$request['q'] = '';
 		}
 		$this->data['title'] = "Homepage";
 		$term = $request['q'];
+		
+		$tahun = $request['tahun'];
+		$jenis = $request['jenis'];
+		//$dosen = $request['lecturer_ids'];
+		$lecturer_ids = $request['lecturer_ids`'];
+		$aSql = '';
+		if($tahun){
+			$aSql .= "AND `tahun` = $tahun";			
+		}
+		if($lecturer_ids){
+			$aSql .= "AND `lecturer_ids` LIKE '%{$lecturer_ids}%'";			
+		}
+		if($jenis){
+			$aSql .= "AND `jenis` = '{$jenis}'";			
+		}
+		
 		$error = false;
 		$terms = explode(' ',$term);
 		$e = $this->library('pencarian');
@@ -29,7 +45,7 @@ class Search extends BaseController{
 		$stemmer = new stemmer();
 		if(count($terms) == 1){
 			$term = trim($term);
-			$problems = $problemModel->query("SELECT * FROM `problems` WHERE `term` = '{$term}' GROUP BY term ORDER BY `problems`.`id_problem` DESC");
+			$problems = $problemModel->query("SELECT * FROM `problems` WHERE `term` = '{$term}' $aSql GROUP BY term ORDER BY `problems`.`id_problem` DESC");
 			$results = $problems[0];
 			$this->data['created'] = $results['created'];		
 			//$this->pre($results);
@@ -37,9 +53,8 @@ class Search extends BaseController{
 			$this->data['looping'] = unserialize($results['result']);
 			$this->data['cache'] = true;
 			$results['result'] = $problems;
-		} else if(count($terms) > 1){
-			
-			$od_problems = $problemModel->query("SELECT * FROM `problems` WHERE `term` = '{$term}' GROUP BY term ORDER BY `problems`.`id_problem` DESC");
+		} else if(count($terms) > 1){			
+			$od_problems = $problemModel->query("SELECT * FROM `problems` WHERE `term` = '{$term}' $aSql GROUP BY term ORDER BY `problems`.`id_problem` DESC");
 			$results = $od_problems[0];
 			$this->data['created'] = $results['created'];		
 			//echo 'tes';$this->pre($results);
@@ -82,7 +97,7 @@ class Search extends BaseController{
 					$this->data['looping'] = unserialize($problemModel->variables['result']);
 					$this->data['result'] = unserialize($problemModel->variables['result']);
 					$this->data['cache'] = true;
-					$old_problems = $problemModel->query("SELECT * FROM `problems` WHERE `term` = '{$term}' GROUP BY term ORDER BY `problems`.`id_problem` DESC");
+					$old_problems = $problemModel->query("SELECT * FROM `problems` WHERE `term` = '{$term}' $aSql GROUP BY term ORDER BY `problems`.`id_problem` DESC");
 					
 					//$this->pre($this->data);
 					
@@ -91,6 +106,9 @@ class Search extends BaseController{
 						$solution->term = $request['q'];
 						$solution->result = $problemModel->variables['result'];
 						$solution->created = date("Y-m-d");
+						$solution->tahun = $request['tahun'];
+						$solution->lecturer_ids  = $request['dosen'];
+						$solution->jenis  = $request['jenis'];
 						if(count($this->data['result']) >=1){
 							$solution->Create();
 						}
@@ -135,6 +153,9 @@ class Search extends BaseController{
 				$solution = $this->loadmodel('SearchModel');
 				$solution->term = $request['q'];
 				$solution->result = serialize($hasil);
+				$solution->tahun = $request['tahun'];
+				$solution->lecturer_ids  = $request['dosen'];
+				$solution->jenis  = $request['jenis'];
 				$solution->created = date("Y-m-d");
 				if(count($results['result']) >=1){
 					$solution->Create();
@@ -196,6 +217,7 @@ class Search extends BaseController{
 			$ids = array_keys($this->data['result']);
 			$jurnal = $this->loadmodel('JurnalModel');
 			$looping = $jurnal->in(array_values($ids));
+				
 			$hasil = array();
 			foreach($looping as $key => $value){
 				$hasil[$value['id_jurnal']] = $value;
@@ -204,8 +226,14 @@ class Search extends BaseController{
 			
 			$solution = $this->loadmodel('SearchModel');
 			$solution->term = $request['q'];
+			$solution->tahun = $request['tahun'];
+			$solution->lecturer_ids  = $request['dosen'];
+			$solution->jenis  = $request['jenis'];
 			$solution->result = serialize($hasil);
 			$solution->created = date("Y-m-d");
+			
+			
+			
 			if(count($results['result']) >=1){
 				$solution->Create();
 			}

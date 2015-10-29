@@ -110,6 +110,7 @@ class Crud {
 	}
 	
 	public function query($sql){
+		//echo $sql;
 		return $this->db->query($sql);
 	}
 	
