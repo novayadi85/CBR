@@ -1,23 +1,23 @@
 <div class="container">
 	<div class="row">
 		<?php foreach($jurnals as $jurnal):?>
-		<div class="col-md-12">
+		<div class="col-md-6">
 		
 			<div class="col-md-12">
 				
 				<div class="hentry sevenup">
-					<h2 class="entry-title"><?php echo $jurnal['title']?></h2>
-					<p>Penulis : <a class="showMe" href="#"><?php echo $jurnal['writer_1']?></a> , diposting tanggal <abbr class="published"><?php echo $jurnal['created']?></abbr></p>
+					<h4 class="entry-title" style="line-height: 180%;"><?php echo $jurnal['title']?></h4>
+					<p>Penulis : <strong><?php echo implode(" & ",array(ucfirst($jurnal['writer_1']),ucfirst($jurnal['writer_2'])))?> </strong><br> Diposting tanggal <abbr class="published"><strong><?php $date = new DateTime($jurnal['created']);echo $date->format('d M Y'); ?></strong></abbr></p>
 					<div class="entry-content">
-						<h4>Abstract</h4>
+						<h4>Keterangan</h4>
 						<p class="text"><?php echo $jurnal['text']?>	</p>
 						
-						<p class="keywords">Kata Kunci :  <i>Prestasi Kerja, Stres Kerja</i></p>
+						<!--<p class="keywords">Kata Kunci :  <i>Prestasi Kerja, Stres Kerja</i></p>-->
 					</div>
 				</div>
 				<div id="articleFullText">
-					<h4>Full Text:</h4>
-					<a href="<?php echo site('Media/'.$jurnal['filepath'])?>" class="file" target="_parent">DOCX</a>
+					<p>Download file lengkap
+					<a href="<?php echo site('Media/'.$jurnal['full_file'])?>" class="file" target="_parent">&nbsp;&nbsp;<i style="font-size:22px" class="fa fa-file-word-o"></i></a></p>
 				</div>
 			</div>
 			

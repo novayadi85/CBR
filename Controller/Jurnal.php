@@ -60,7 +60,9 @@ class Jurnal extends BaseController{
 		if(!empty($request)){
 			$jurnal = $this->loadmodel('JurnalModel');
 			$lats_id = $jurnal->query("select MAX(`id_jurnal`) AS last FROM `jurnals` ");
-
+			if($lats_id == null){
+				$jurnal->query("TRUNCATE `jurnals`");
+			}
 			$jurnal->writer_1 = strtolower($request['writer_1']);
 			$jurnal->writer_2 = strtolower($request['writer_2']);
 			$jurnal->title = $request['title'];
@@ -71,7 +73,19 @@ class Jurnal extends BaseController{
 			$jurnal->jenis = $request['jenis']; 
 			//$jurnal->lecturer_ids = implode(",",$request['lecturer_ids']);
 			//$jurnal->filepath = '/test/';
-			$jurnal->full_file = ''; 
+			$jurnal->full_file = '';
+
+			if ($_FILES['full_file']['size'] > 0) {
+				$fullUpload = $this->library('Libs_Upload');	
+				$fullUpload->setDir(FILE_PATH);
+				$fullUpload->setExtensions(array('docx','doc'));  //allowed extensions list//
+				$fullUpload->setMaxSize(10);                          //set max file size to be allowed in MB//
+				$fullUpload->sameName(false);
+				if($fullUpload->uploadFile('full_file')){   //txtFile is the filebrowse element name //     
+					$nimage  =   $fullUpload->getUploadName(); //get uploaded file name, renames on upload//
+					$jurnal->full_file = $nimage; 
+				}
+			}
 			
 			if ($_FILES['file']['size'] > 0) {
 				$uploader = $this->library('Libs_Upload');	
@@ -123,16 +137,16 @@ class Jurnal extends BaseController{
 				}
 				
 				if($jurnal->Save()){
-					$this->data['msg'] = addSuccess(lang('Your new jurnal has been saved.'));
+					$this->data['msg'] = addSuccess(lang('Data Jurnal sudah tersimpan, untuk pencarian yang maksimal silakan bersihkan history.'));
 					$this->index();
 				} else {
 					
-					$this->data['msg'] = addError(lang('Your dont have any changed.'));
+					$this->data['msg'] = addError(lang('Penyimpanan data jurnal gagal dilakukan.'));
 					$this->index();
 				}
 			} else {
 				if($jurnal->Create()){
-					$this->data['msg'] = addSuccess(lang('Your new jurnal has been saved.'));
+					$this->data['msg'] = addSuccess(lang('Data Jurnal sudah tersimpan, untuk pencarian yang maksimal silakan bersihkan history.'));
 					$this->index();
 				}
 			}

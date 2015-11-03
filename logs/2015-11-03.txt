@@ -1,0 +1,7 @@
+Time : 07:33:22
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_cbr`.`jurnals`, CONSTRAINT `jurnals_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `students` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE)
+Raw SQL : INSERT INTO jurnals (writer_1,writer_2,title,text,year,created,user_id,jenis,full_file,filepath,filetext) VALUES (:writer_1,:writer_2,:title,:text,:year,:created,:user_id,:jenis,:full_file,:filepath,:filetext)
+
+Time : 07:31:42
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'full_file' in 'field list'
+Raw SQL : INSERT INTO jurnals (writer_1,writer_2,title,text,year,created,user_id,jenis,full_file,filepath,filetext) VALUES (:writer_1,:writer_2,:title,:text,:year,:created,:user_id,:jenis,:full_file,:filepath,:filetext)
