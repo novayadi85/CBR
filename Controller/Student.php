@@ -103,4 +103,22 @@ class Student extends BaseController{
 		}
 		//pre($request);exit;
 	}
+	function delete(){
+		$post =  Core::Request();
+		$Student = $this->loadmodel('StudentModel');
+		$Student->nim = $post['params'];
+		if($Student->Delete()){
+			$data['msg'] = addSuccess(lang('1 Student has been deleted.'));
+		} else {
+			$data['msg'] = addError(lang('Unsuccess delete this Student.'));
+		}		
+		$data['title'] = lang('Management student');	
+		$data['header'] = lang('Management student');
+		$data['layout'] = 'adminhtml';
+		$this->data = $data;
+		$this->index();
+		$Student->All();
+		$data['students'] = $Student->variables;
+			
+	}
 }

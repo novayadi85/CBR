@@ -44,6 +44,18 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	
+	<script src="<?php echo $base_url;?>js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo $base_url;?>js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="<?php echo $base_url;?>js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?php echo $base_url;?>js/plugins/morris/raphael.min.js"></script>
+    <script src="<?php echo $base_url;?>js/plugins/morris/morris.min.js"></script>
+    <script src="<?php echo $base_url;?>js/plugins/morris/morris-data.js"></script>
 	
 
 </head>
@@ -100,14 +112,14 @@
                         <li>
                             <a class="active" href="<?php echo site('admin/')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-                        
+                        <?php /** 
 						<li>
                             <a class="<?php echo ($parameter['controller'] =='lecturer')? 'active' : ''; ?>" href="<?php echo site('lecturer/index')?>"><i class="fa fa-user-md"></i> <?php echo __('Lecturers');?></a>
                         </li>
 						<li>
                             <a class="<?php echo ($parameter['controller'] =='student')? 'active' : ''; ?>" href="<?php echo site('student/index')?>"><i class="fa fa-graduation-cap"></i> <?php echo __('Students');?></a>
                         </li>
-
+						***/ ?>
 						<li>
                             <a class="<?php echo ($parameter['controller'] =='user')? 'active' : ''; ?>" href="<?php echo site('user/index')?>"><i class="fa fa-users"></i> <?php echo __('Users');?></a>
                         </li>
@@ -145,19 +157,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery Version 1.11.0 -->
-    <script src="<?php echo $base_url;?>js/jquery-1.11.0.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo $base_url;?>js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?php echo $base_url;?>js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="<?php echo $base_url;?>js/plugins/morris/raphael.min.js"></script>
-    <script src="<?php echo $base_url;?>js/plugins/morris/morris.min.js"></script>
-   <!-- <script src="<?php echo $base_url;?>js/plugins/morris/morris-data.js"></script>-->
-
+    
 	<!-- DataTables JavaScript -->
     <script src="<?php echo $base_url;?>js/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="<?php echo $base_url;?>js/plugins/dataTables/dataTables.bootstrap.js"></script>

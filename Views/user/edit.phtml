@@ -10,7 +10,7 @@
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-6">
-			<form role="form" method="post" action="<?php echo site('user/update/'.$request['username'])?>">
+			<form role="form" method="post" action="<?php echo site('user/update/'.$request['id'])?>">
 				<div class="form-group">
 					<label>Username</label>
 					<input  class="form-control" name="username" value="<?php echo (isset($request['username']))? $request['username']:'' ?>">					

@@ -18,6 +18,29 @@ class User extends BaseController{
 		$this->view('user/index',$this->data);
 	}
 	
+	function dashboard(){
+		$users = $this->loadmodel('UserModel');
+		$data['title'] = "Dashboard";
+		$data['header'] = 'Dashboard';
+		$data['users'] = $users->all();
+		$data['layout'] = 'adminhtml';
+		$data['title'] = "Backend";
+		$ProblemModel = $this->loadmodel('SearchModel');
+		$JurnalModel = $this->loadmodel('JurnalModel');
+		$LecturerModel = $this->loadmodel('LecturerModel');
+		$StudentModel = $this->loadmodel('StudentModel');
+		$data['lecturer'] = $LecturerModel->count('*');
+		$data['jurnal'] = $JurnalModel->count('*');
+		$data['student'] = $StudentModel->count('*');
+		$data['problem'] = $ProblemModel->query("SELECT count as value, term as label FROM `problems` GROUP BY `term` ORDER BY `id_problem` DESC");
+		$data['problemb'] = $ProblemModel->query("SELECT count , term  FROM `problems` GROUP BY `term` ORDER BY `id_problem` DESC");
+		$data['problem'] = json_encode($data['problem']);
+		$data['problemb'] = json_encode($data['problemb']);
+		$this->data = $data;
+		$this->view('admin/index',$this->data);
+	}
+
+	
 	function invalid(){
 		$this->data['title'] = "Pengguna";
 		$this->data['layout'] = 'login';		
@@ -27,14 +50,19 @@ class User extends BaseController{
 	
 	function login(){
 		$request = Core::Request();
-		
 		$users = $this->loadmodel('UserModel');
-		$users->username = 'admin';		
-		$users->Find();
-		if(!empty($users->variables)){
-			$_SESSION['loggedIn'] = $users->variables;
-			//$this->index();
-			header('Location: http://localhost/new-cbr');
+		$username = $request['username'];
+		$password = $request['password'];
+		//$users->username = 'admin';
+		$sql = "SELECT * FROM `users` WHERE `username` = '{$username}' AND `password` = ('{$password}')";
+
+		$userLogin = $users->query($sql);
+		// $userLogin = 1;
+		
+		if(!empty($userLogin)){
+			$_SESSION['loggedIn'] = $userLogin;
+			$this->dashboard();
+			//header('Location: http://localhost/new-cbr');
 		} else {
 			$this->invalid();
 		}
@@ -66,7 +94,7 @@ class User extends BaseController{
 			
 				$user = $this->loadmodel('UserModel');
 				$user->username = $request['username'];
-				$user->password = md5($request['password']);
+				$user->password = ($request['password']);
 				$user->address = $request['address'];
 				$user->name = $request['name'];
 				if($user->Create()){
@@ -82,7 +110,7 @@ class User extends BaseController{
 	function delete($post){
 		//pre($post);exit;
 		$user = $this->loadmodel('UserModel');
-		$user->username = $post['params'];
+		$user->id = $post['params'];
 		if($user->Delete()){
 			$data['msg'] = addSuccess(lang('1 User has been deleted.'));
 		} else {
@@ -100,7 +128,7 @@ class User extends BaseController{
 	function edit(){
 		$params =  Core::Request();
 		$user = $this->loadmodel('UserModel');
-		$user->username = $params['params'];
+		$user->id = $params['params'];
 		$user->Find();
 		$this->data['title'] = lang('Edit user');	
 		$this->data['header'] = lang('Edit new user');
@@ -111,13 +139,13 @@ class User extends BaseController{
 	
 	function update(){
 		$request = Core::Request();
-		
+		//print_r($request);
 		if(!empty($request)){
 			//$this->__validusername($request['username']);			
 			$user = $this->loadmodel('UserModel');
-			$user->username = $request['params'];
+			$user->id = $request['params'];
 			if(!empty($request['password'])){
-				$user->password = md5($request['password']);
+				$user->password = ($request['password']);
 			} 
 			
 			$user->address = $request['address'];
@@ -135,13 +163,13 @@ class User extends BaseController{
 	}
 	
 	private function __validusername($username){
-		$user = $this->loadmodel('UserModel');
-		$user->username = $username;
-		$user->Find();
+		// $user = $this->loadmodel('UserModel');
+		// $user->username = $username;
+		// $user->Find();
 		
-		if($user->variables){
-			return false;
-		} 
+		// if($user->variables){
+			// return false;
+		// } 
 		
 		return true;
 	}

@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 	ini_set('display_errors',0);
 	ini_set('memory_limit','1032M');
 	require("Core.php");
@@ -14,7 +15,7 @@
 	$db = new Db();
 	//$session = new Session();
 	// Require the person class file
-   
+	
 	require("Classes/Sinov.class.php");
 	$loader = new Loader($_GET);
 	$controller = $loader->CreateController();

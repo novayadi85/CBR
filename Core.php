@@ -6,7 +6,7 @@ Class Core {
 	
 	public function __construct(){
 		if (!defined('DEBUG')) 
-			define('DEBUG', true);
+			define('DEBUG', false);
 		
 		
 		

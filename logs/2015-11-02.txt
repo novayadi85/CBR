@@ -1,0 +1,91 @@
+Time : 11:32:44
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_cbr`.`jurnals`, CONSTRAINT `jurnals_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `students` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE)
+Raw SQL : INSERT INTO jurnals (writer_1,writer_2,title,text,year,created,user_id,jenis,filepath,filetext) VALUES (:writer_1,:writer_2,:title,:text,:year,:created,:user_id,:jenis,:filepath,:filetext)
+
+Time : 07:18:07
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Ibu tini GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` WHERE  `x__from` = '2000' AND  `x__to` = '2015' AND  `writer` = 'Ibu tini GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 07:17:51
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Ibu tini GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` WHERE  `x__from` = '2000' AND  `x__to` = '2015' AND  `writer` = 'Ibu tini GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 07:17:36
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Ibu tini GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` WHERE  `x__from` = '2000' AND  `x__to` = '2015' AND  `writer` = 'Ibu tini GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 07:16:56
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'writer_1' in 'where clause'
+Raw SQL : SELECT * FROM `problems` WHERE  `x__from` = '2000' AND  `x__to` = '2015' AND  `writer_1` = 'Ibu tini' OR `writer_2` = 'Ibu tini' GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 06:41:39
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:41:24
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:40:33
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,jenis,created,total_jurnal) VALUES (:term,:result,:from,:jenis,:created,:total_jurnal)
+
+Time : 06:40:25
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:jenis,:created,:total_jurnal)
+
+Time : 06:39:58
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:jenis,:created,:total_jurnal)
+
+Time : 06:39:46
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,jenis,created,total_jurnal) VALUES (:term,:result,:from,:jenis,:created,:total_jurnal)
+
+Time : 06:39:34
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:jenis,:created,:total_jurnal)
+
+Time : 06:38:45
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:38:04
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:37:43
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:34:48
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:jenis,:created,:total_jurnal)
+
+Time : 06:34:09
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:33:07
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:33:00
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:31:45
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from,to,writer,jenis,created,total_jurnal) VALUES (?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : INSERT INTO problems (term,result,from,to,writer,jenis,created,total_jurnal) VALUES (:term,:result,:from,:to,:writer,:jenis,:created,:total_jurnal)
+
+Time : 06:29:00
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'from' in 'where clause'
+Raw SQL : SELECT * FROM `problems` WHERE  `from` = '2000' AND  `to` = '2015' AND `jenis` = 'rob'  GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 05:19:29
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '['  GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` WHERE `term` = 'ghjgh'['  GROUP BY term ORDER BY `problems`.`id_problem` DESC
+
+Time : 05:19:29
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '['  GROUP BY term ORDER BY `problems`.`id_problem` DESC' at line 1
+Raw SQL : SELECT * FROM `problems` WHERE `term` = 'ghjgh'['  GROUP BY term ORDER BY `problems`.`id_problem` DESC

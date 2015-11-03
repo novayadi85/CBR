@@ -59,7 +59,9 @@ Class xml {
 			//create the root element
 			$root = $xmlDoc->appendChild(
 			$xmlDoc->createElement("Document"));
-		   
+		    // echo '<pre>';
+			// print_r($vals);
+			// echo '</pre>';
 			$tutorials = array( $this-> __element(
 				$vals['penulis'],
 				$vals['title'],

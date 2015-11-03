@@ -75,6 +75,7 @@ class Crud {
 		else {
 			$sql 		= "INSERT INTO ".$this->table." () VALUES ()";
 		}
+		
 
 		return $this->db->query($sql,$bindings);
 	}
@@ -98,13 +99,14 @@ class Crud {
 	}
 
 	public function all(){
-		return $this->db->query("SELECT * FROM " . $this->table);
+		return $this->db->query("SELECT * FROM " . $this->table . " ORDER BY ".$this->pk ." DESC");
 	}
 	
 	public function IN($ids,$fk=null){
+		if(is_array($ids))
 		$ids = implode(",",$ids);
 		if(!empty($fk)) $this->pk = $fk;
-		//echo "SELECT * FROM " . $this->table ." WHERE " . $this->pk . " IN ($ids)";	
+		
 		if(!empty($ids)) 
 		return $this->db->query("SELECT * FROM " . $this->table ." WHERE " . $this->pk . " IN ($ids)");
 	}

@@ -3,17 +3,77 @@
         <div class="col-md-12">
     		<form id="formSearch" role="form" method="post" action="<?php echo site('search');?>">
 			
-            <div id="custom-search-input">
+            <div id="custom-search-input" class="animate bounceInLeft">
                 <div class="input-group col-md-12">
-                    <input type="text" name="q" class="form-control input-lg" placeholder="Masukkan kata kunci..." />
+                    <input type="text" name="q" class="form-control input-lg no-radius" placeholder="Masukkan kata kunci..." />
                     <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
+						
                     </span>
+					<div class="input-group-btn">
+						<a class="aTools" onclick="toggleTool()"><span  class="tools"><i class="fa fa-cog"></i></span></a>
+					</div>
                 </div>
             </div>
+			<div style="height:65px;">
+			<div class="tool-option" <?php if (!$request['from'] && !$request['to']  && !$request['jenis'] ) :  ?> <?php endif;?>>
+				<div class="form-group">
+				<select name="jenis" class="chosen-select">
+					<option value="0">Jenis Jurnal</option>
+					<?php foreach(OptionJenis() as $k => $v):?>
+						<?php 
+						if(isset($request['jenis']) && $request['jenis'] == $k){
+							$selected = "SELECTED";
+						}
+						?>
+						<option <?php echo $selected; ?> value="<?php echo $k;?>"><?php echo $v;?></option>
+					<?php $selected = ''; endforeach;?>
+				</select>
+				<select style="width:120px;" name="from" class="chosen-select">
+					<option value="0">Dari tahun</option>
+					<?php 
+					for($kk=2000;$kk<=date('Y');$kk++){
+							if(isset($request['from']) && $request['from'] == $kk){
+								$selected = "SELECTED";
+							}
+							echo "<option {$selected} value='{$kk}'>{$kk}</option>";
+						$selected = '';
+					}
+					?>
+				</select>
+				s/d
+				<select style="width:120px;" name="to" class="chosen-select">
+					<option value="0">Sampai tahun</option>
+					<?php 
+					for($kk=2000;$kk<=date('Y');$kk++){
+							if(isset($request['to']) && $request['to'] == $kk){
+								$selected = "SELECTED";
+							}
+							echo "<option {$selected} value='{$kk}'>{$kk}</option>";
+						$selected = '';
+					}
+					?>
+				</select>
+				</div>
+				<div class="form-group">
+					<input type="text" name="penulis" placeholder="Masukkan nama publisher atau penulis" size="70" style="color:#000" value="<?php echo (isset($request['penulis']))? $request['penulis']:'' ?>">
+				</div>
+				</div>
+			</div>
 			</form>
+			
         </div>
 	</div>
 </div>
+<script>
+		function toggleTool(){
+			if($('.tool-option').hasClass('hide')){
+				$('.tool-option').removeClass('hide');
+			} else{
+				$('.tool-option').addClass('hide');
+			}
+		}	
+			
+</script>

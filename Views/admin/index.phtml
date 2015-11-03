@@ -1,1 +1,145 @@
-ADMIN BRO
+<!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-user-md fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php print $lecturer;?></div>
+                                    <div>Dosen</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left"><a href="<?php echo site('lecturer/index')?>">Lihat Detail</a></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-graduation-cap fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php print $student;?></div>
+                                    <div>Mahasiswa</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <a href="<?php echo site('student/index')?>"><span class="pull-left">Lihat Detail</span></a>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-file fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php print $jurnal;?></div>
+                                    <div>Jurnal</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <a href="<?php echo site('jurnal/index')?>"><span class="pull-left">Lihat Detail</span></a>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-users fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php print $student;?></div>
+                                    <div>Pengguna</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <a href="<?php echo site('user/index')?>"><span class="pull-left">Lihat Detail</span></a>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+				<div class="col-lg-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<a href="<?php echo site('problem/index')?>"><i class="fa fa-bar-chart-o fa-fw"></i> Donat Statistik Pencarian</a>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div id="morris-donut-chart"></div>
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					<!-- /.col-lg-4 -->
+				</div>
+				<div class="col-lg-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<a href="<?php echo site('problem/index')?>"><i class="fa fa-bar-chart-o fa-fw"></i> Chart Statistik Pencarian</a>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div id="morris-bar-chart"></div>
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					<!-- /.col-lg-4 -->
+				</div>
+			</div>
+		
+		
+<script>
+	$(function() {
+		Morris.Bar({
+			element: 'morris-bar-chart',
+			data: <?php echo $problemb;?>,
+			xkey: 'term',
+			ykeys: ['count'],
+			labels: ['Jumlah Pencarian'],
+			hideHover: 'auto',
+			resize: true
+		});
+
+	});
+	
+	Morris.Donut({
+        element: 'morris-donut-chart',
+        data: <?php echo $problem; ?>,
+        resize: true
+    });
+
+</script>

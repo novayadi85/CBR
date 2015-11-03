@@ -2,7 +2,7 @@
 <?php echo (isset($msg))?$msg:'';?>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		Form Student<br/>
+		Form Ubah Data Jurnal<br/>
 	</div>
 
 <div class="panel-body">
@@ -12,8 +12,12 @@
 		<div class="col-lg-6">
 			<form enctype="multipart/form-data" role="form" method="post" action="<?php echo site('jurnal/save/'.$request['id_jurnal'])?>">
 				<div class="form-group">
-					<label>NIM</label>
-					<input class="form-control" name="nim" value="<?php echo (isset($request['nim']))? $request['nim']:'' ?>">					
+					<label>Nama Penulis I</label>
+					<input  class="form-control" name="writer_1" value="<?php echo (isset($request['writer_1']))? $request['writer_1']:'' ?>">					
+				</div>
+				<div class="form-group">
+					<label>Nama Penulis II</label>
+					<input  class="form-control" name="writer_2" value="<?php echo (isset($request['writer_2']))? $request['writer_2']:'' ?>">					
 				</div>
 				
 				<div class="form-group">
@@ -21,27 +25,33 @@
 					<input class="form-control" name="title" value="<?php echo (isset($request['title']))? $request['title']:'' ?>">
 				</div>
 				<div class="form-group">
-					<label>Abstract</label>
-					<textarea class="form-control" name="abstract" ><?php echo (isset($request['abstract']))? $request['abstract']:'' ?></textarea>
-				</div>
-				<div class="form-group">
-					<label>Year</label>
-					<input class="form-control" name="year" value="<?php echo (isset($request['year']))? $request['year']:'' ?>">
-				</div>
-				<div class="form-group">
-					<label>Pembimbing</label>
-					<?php $arr = explode(",",$request['lecturer_ids']);?>
-					<select style="width:350px;" multiple class="chosen-select" name="lecturer_ids[]" data-placeholder="Select Your Options">
-						<option value="0">Pilih Dosen Pembimbing..</option>
-						<?php foreach($lecturer as $key => $value):?>
-						<option <?php if(in_array($value['id_lecturer'],$arr)) echo 'SELECTED'; ?> value="<?php echo $value['id_lecturer'];?>"><?php echo $value['name'];?></option>
+					<label>Jenis Jurnal</label><br>
+					<select style="width:350px;" class="chosen-select" name="jenis" data-placeholder="Select Your Options">
+						<option value="0">Pilih Jenis Jurnal</option>
+						<?php foreach(OptionJenis() as $k => $v):?>
+						<option <?php if($k == $request['jenis']) echo 'SELECTED'; ?> value="<?php echo $k;?>"><?php echo $v;?></option>
 						<?php endforeach;?>
 					</select>
 				</div>
 				
 				<div class="form-group">
+					<label>Keterangan</label>
+					<textarea class="form-control" name="abstract" ><?php echo (isset($request['text']))? $request['text']:'' ?></textarea>
+				</div>
+				<div class="form-group">
+					<label>Year</label>
+					<input class="form-control" name="year" value="<?php echo (isset($request['year']))? $request['year']:'' ?>">
+				</div>
+				
+				
+				<div class="form-group">
 					<label>File (docx)</label>
 					<input type="file" name="file" value="<?php echo (isset($request['file']))? $request['file']:'' ?>">
+					
+				</div>
+				<div class="form-group">
+					<label>File Lengkap (docx)</label>
+					<input type="file" name="full_file" value="<?php echo (isset($request['full_file']))? $request['full_file']:'' ?>">
 					
 				</div>
 				<button class="btn btn-primary" type="submit">Save</button>

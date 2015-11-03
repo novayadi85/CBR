@@ -15,32 +15,61 @@ Class files{
 	function find_all_files($dir)
 	{
 		$root = scandir($dir);
-		// echo '<pre>';
-		// print_r($root);
-		// echo '</pre>';
+		$req = false;
 		$request = Core::request();
-		if(!empty($request)){
-			$year = $request['tahun'];
-			$dosen = $request['dosen'];
+		// print_r($request);
+		
+		if(($request)){
+			
+			$from = ($request['from'])?$request['from']: '2000';
+			$to = ($request['to'])?$request['to']: date("Y");
+		
 			$jenis = $request['jenis'];
-			//$JurnalModel = $this->loadmodel('JurnalModel');
+			$penulis = strtolower($request['penulis']);
+			$aSql = array();
+			
+			// if($tahun != 0){
+				// $aSql[]= " `year` = $tahun ";			
+			// }
+			
+			if($penulis){
+				$aSql[]= " `writer_1` LIKE '%{$penulis}' OR `writer_2` LIKE '%{$penulis}'";			
+			}
+			if($jenis){
+				$aSql[]= " `jenis` = '{$jenis}' ";			
+			}
+			
+			// print_r($aSql);
+			
 			$ndb = new DB();
-			$Jurnals = $ndb->query("SELECT `filetext` FROM `jurnals` WHERE `YEAR` = '{$year}' AND `lecturer_ids` LIKE '%{$dosen}%'");
+			
+			$sql = "SELECT `filetext` FROM `jurnals`";
+		
+			if(count($aSql)){
+				$where_clause = implode(' AND ', $aSql);
+				$where_clause .= " AND `year` between $from and $to";
+				$sql .= " WHERE ". $where_clause;
+			} else {
+				$where_clause .= " `year` between $from and $to";
+				$sql .= " WHERE ". $where_clause;
+			}
+			// echo $sql;
+			// exit();
+			$Jurnals = $ndb->query($sql);
 			$_Jurnals = $Jurnals;
+			
 			if(!empty($_Jurnals)){
 				foreach($_Jurnals as $k => $_Jurnal){
 					$filetext[] = $_Jurnal['filetext'];
 				}
 			}
-			
-			// echo '<pre>';
-			// print_r($_Jurnals);
-			// echo '</pre>';
-		}
+
+		} 
 		
 		// echo '<pre>';
 		// print_r($filetext);
 		// echo '</pre>';
+		// exit();
 		
 		foreach($root as $value)
 		{
@@ -57,6 +86,10 @@ Class files{
 				$result[]=$value;
 			}
 		}
+		// echo '<pre>';
+		// print_r($result);
+		// echo '</pre>';
+		
 		return $result;
 	}
 	function getCollection(){
@@ -77,6 +110,10 @@ Class files{
 				}
 			}
 		}
+		// echo '<pre>';
+		// print_r($collection);
+		// echo '</pre>';
+		// exit();
 		return $collection;
 	}
 	

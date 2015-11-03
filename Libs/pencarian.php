@@ -180,7 +180,6 @@ class pencarian{
 
 			if($hasil!=null){
 				arsort($hasil);
-				
 			}
 			
 			//$this->pre($sum);

@@ -2,7 +2,7 @@
 <?php echo (isset($msg))?$msg:'';?>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		Form Student<br/>
+		Form Tambah Data Jurnal<br/>
 	</div>
 
 <div class="panel-body">
@@ -11,15 +11,24 @@
 		<div class="col-lg-6">
 			<form enctype="multipart/form-data" role="form" method="post" action="<?php echo site('jurnal/save')?>">
 				<div class="form-group">
-					<label>NIM</label><br>
+					<label>Nama Penulis I</label><br>
 					<!--<input class="form-control" name="nim" value="<?php echo (isset($request['nim']))? $request['nim']:'' ?>">					
 					-->
-					<select style="width:350px;"  class="chosen-select" name="nim" data-placeholder="Pilih Mahasiswa">
-						<option value="0">Pilih Mahasiswa..</option>
+					<?php /** <select style="width:350px;"  class="chosen-select" name="nim" data-placeholder="Pilih Mahasiswa">
+						<option value="0">Pilih Penulis..</option>
 						<?php foreach($student as $key => $value):?>
-						<option value="<?php echo $value['nim'];?>"><?php echo $value['nim'];?></option>
+						<option value="<?php echo $value['nim'];?>"><?php echo $value['name'];?></option>
 						<?php endforeach;?>
 					</select>
+					**/ ?>
+					<input class="form-control" name="writer_1" value="<?php echo (isset($request['writer_1']))? $request['writer_1']:'' ?>">					
+				
+				</div>
+				<div class="form-group">
+					<label>Nama Penulis II</label><br>
+					
+					<input class="form-control" name="writer_2" value="<?php echo (isset($request['writer_2']))? $request['writer_2']:'' ?>">					
+				
 				</div>
 				
 				<div class="form-group">
@@ -27,7 +36,16 @@
 					<input class="form-control" name="title" value="<?php echo (isset($request['title']))? $request['title']:'' ?>">
 				</div>
 				<div class="form-group">
-					<label>Abstract</label>
+					<label>Jenis Jurnal</label><br>
+					<select style="width:350px;" class="chosen-select" name="jenis" data-placeholder="Select Your Options">
+						<option value="0">Pilih Jenis Jurnal</option>
+						<?php foreach(OptionJenis() as $k => $v):?>
+						<option value="<?php echo $k;?>"><?php echo $v;?></option>
+						<?php endforeach;?>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Keterangan</label>
 					<textarea class="form-control" name="abstract" ><?php echo (isset($request['abstract']))? $request['abstract']:'' ?></textarea>
 				</div>
 				<div class="form-group">
@@ -42,7 +60,7 @@
 					</select>
 				
 				</div>
-				<div class="form-group">
+				<?php /** <div class="form-group">
 					<label>Pembimbing</label><br>
 					<select style="width:350px;" multiple class="chosen-select" name="lecturer_ids[]" data-placeholder="Select Your Options">
 						<option value="0">Pilih Dosen Pembimbing..</option>
@@ -51,9 +69,15 @@
 						<?php endforeach;?>
 					</select>
 				</div>
+				**/?>
 				<div class="form-group">
 					<label>File (docx)</label>
 					<input type="file" name="file" value="<?php echo (isset($request['file']))? $request['file']:'' ?>">
+					
+				</div>
+				<div class="form-group">
+					<label>File Lengkap (docx)</label>
+					<input type="file" name="full_file" value="<?php echo (isset($request['full_file']))? $request['full_file']:'' ?>">
 					
 				</div>
 				<button class="btn btn-primary" type="submit">Save</button>

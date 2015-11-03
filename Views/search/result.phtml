@@ -5,23 +5,29 @@
 			<div class="col-md-6">
 				<a href="<?php echo site('search');?>" class="b_logoArea" h="ID=SERP,5037.1"><h5 class="b_logo" data-bm="1">Pencarian Jurnal dengan Metode Case Based Reasoning</h5></a>
 				<div class="search">
-					<input type="text" name="q" class="form-control input-sm" maxlength="64" placeholder="Masukkan kata kunci" value="<?php echo (isset($request['q']))? $request['q']:'' ?>" />
-					<button type="submit" class="btn btn-primary btn-sm">Search</button>
+					<input type="text" name="q" class="form-control input-sm s_query" style="height:35px;" maxlength="64" placeholder="Masukkan kata kunci" value="<?php echo (isset($request['q']))? $request['q']:'' ?>" />
+					<button type="submit" class="btn btn-primary btn-sm" style="height:35px;top: 5px;">Search</button>
 					
 				</div>
 				
-				<div class="tool-option" <?php if (!isset($request['dosen'])) :  ?>style="display:none" <?php endif;?>>
-				
-				<select name="jenis">
+				<div class="tool-option" <?php if (!$request['from'] && !$request['to']  && !$request['jenis'] ) :  ?> <?php endif;?>>
+				<div class="form-group">
+				<select name="jenis" class="chosen-select">
 					<option value="0">Jenis Jurnal</option>
-					<option value='spk'>SPK</option>
-					<option value='sispar'>Sistem pakar</option>
+					<?php foreach(OptionJenis() as $k => $v):?>
+						<?php 
+						if(isset($request['jenis']) && $request['jenis'] == $k){
+							$selected = "SELECTED";
+						}
+						?>
+						<option <?php echo $selected; ?> value="<?php echo $k;?>"><?php echo $v;?></option>
+					<?php $selected = ''; endforeach;?>
 				</select>
-				<select name="tahun">
-					<option value="0">Tahun</option>
+				<select style="width:120px;" name="from" class="chosen-select">
+					<option value="0">Dari tahun</option>
 					<?php 
 					for($kk=2000;$kk<=date('Y');$kk++){
-							if(isset($request['tahun']) && $request['tahun'] == $kk){
+							if(isset($request['from']) && $request['from'] == $kk){
 								$selected = "SELECTED";
 							}
 							echo "<option {$selected} value='{$kk}'>{$kk}</option>";
@@ -29,20 +35,23 @@
 					}
 					?>
 				</select>
-				<select name="dosen">
-					<option value="0">Dosen Pembimbing</option>
+				s/d
+				<select style="width:120px;" name="to" class="chosen-select">
+					<option value="0">Sampai tahun</option>
 					<?php 
-					foreach($lecturer as $key => $value):?>
-						<?php 
-						if(isset($request['dosen']) && $request['dosen'] == $value['id_lecturer']){
+					for($kk=2000;$kk<=date('Y');$kk++){
+							if(isset($request['to']) && $request['to'] == $kk){
 								$selected = "SELECTED";
-						}	
-						?>
-						<option <?php echo $selected;?> <?php if(in_array($value['id_lecturer'],$arr)) echo 'SELECTED'; ?> value="<?php echo $value['id_lecturer'];?>"><?php echo $value['name'];?></option>
-					<?php 
-					$selected = '';
-					endforeach;?>
+							}
+							echo "<option {$selected} value='{$kk}'>{$kk}</option>";
+						$selected = '';
+					}
+					?>
 				</select>
+				</div>
+				<div class="form-group">
+					<input type="text" name="penulis" placeholder="Masukkan nama publisher atau penulis" size="70" value="<?php echo (isset($request['penulis']))? $request['penulis']:'' ?>">
+				</div>
 				</div>
 			</div>
 			</form>
@@ -65,6 +74,7 @@
 	<div class="container">
 	<div class="row">
 		<div class="col-md-12">
+		
 			<?php if(!empty($result)):?>
 			<ol id="rso">
 				<div class="srg">
@@ -73,19 +83,19 @@
 					<li class="g">
 					<!--m-->
 						<div class="rc" data-hveid="67">
-							<h3 class="r">
+							<h5 class="r">
 							<a data-toggle="modal" href="<?php echo site('search/detail/'.$looping[$key]['id_jurnal']);?>" data-target="#myModal"><?php echo $looping[$key]['title'];?></a>
-							</h3>
+							</h5>
 							
 							
 							<div class="s">
 								<div>
 									<div class="f kv _SWb" style="white-space:nowrap">
-										<cite class="_Rm">Oleh : <?php echo $looping[$key]['nim'];?></cite>
+										<cite class="_Rm">Oleh : <?php echo $looping[$key]['writer_1'];?></cite>
 										
 									</div>
 									<?php //$html = $this->library('basic');?>
-									<?php $words = $html->myTruncate(trim($looping[$key]['text']),100); ?>
+									<?php $words = '';//$words = $html->myTruncate(trim($looping[$key]['text']),100); ?>
 									
 									<span class="st">
 									<?php if(!empty($words)): ?>
@@ -110,8 +120,8 @@
 				</div>
 			</ol>
 			<?php endif;?>
-			<?php if(DEBUG)?>
-			<pre><?php print_r($debug);?></pre>
+			<?php /** if(DEBUG)?>
+			<pre><?php print_r($debug);?></pre>**/?>
 		</div>
 	</div>
 </div>
@@ -143,6 +153,15 @@
 **/?>
 
 <script>
+(function($){
+    $.fn.focusTextToEnd = function(){
+        this.focus();
+        var $thisVal = this.val();
+        this.val('').val($thisVal);
+        return this;
+    }
+}(jQuery));
+$('.s_query').focusTextToEnd();
 function toggleTool(){
 	 $( ".tool-option" ).toggle();
 }

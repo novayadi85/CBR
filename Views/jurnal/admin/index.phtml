@@ -12,13 +12,13 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-											<th>No.</th>
-                                            <th>NIM</th>
-											<th>Pembimbing</th>
+											<th width="40">No.</th>
+                                            <th width="100">Jenis</th>
+											<th>Penulis I</th>
+											<th>Penulis II</th>
 											<th>Title</th>
-                                            <th>Year</th>
-                                            <th>filepath</th>
-											<th>Aksi</th>
+											<th>Year</th>
+                                            <th width="120">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -28,26 +28,31 @@
 											<?php $pemb = $Model->IN(explode(",",$jurnal['lecturer_ids'])); ?>
 											
 											<td><?php echo $i++;?></td>
-                                            <td><?php echo $jurnal['nim']?></td>
+                                            <td><?php echo $jurnal['jenis']?></td>
                                             <td>
-											<?php if(!empty($pemb)):
+											<?php /**if(!empty($pemb)):
 													foreach($pemb as $perm): ?>
 													<?php echo $perm['name'] .'<br>';?>
 											<?php  
 													endforeach;
-													endif;?>
+													endif; **/ ?>
+											<?php echo $jurnal['writer_1']?>
+											</td>
+											<td>
+											<?php echo $jurnal['writer_2']?>
 											</td>
 											<?php //$lecturer = $this->loadmodel('LecturerModel'); ?>
 
 											<td><?php echo $jurnal['title']?></td>
                                             <td><?php echo $jurnal['year']?></td>
-											<td><?php echo $jurnal['filepath']?></td>
-                                            <td class="center" align="center">
+											<!--<td><?php echo $jurnal['filepath']?></td>
+                                            -->
+											<td class="center" align="center">
 												<a href="<?php echo site('jurnal/edit/'.$jurnal['id_jurnal'])?>">
-													<i class="fa fa-pencil-square fa-fw"></i>
+													<span class="btn btn-success"><i class="fa fa-pencil-square fa-fw"></i></span>
 												</a>
 												<a href="<?php echo site('jurnal/delete/'.$jurnal['id_jurnal'])?>">
-													<i class="fa fa-times-circle fa-fw"></i>
+													<span class="btn btn-danger"><i class="fa fa-times-circle fa-fw"></i></span>
 												</a>
 											</td>
 											<?php $pemb = array(); endforeach;?>

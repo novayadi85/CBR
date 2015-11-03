@@ -2,7 +2,7 @@
 class UserModel extends BaseModel{
 	
 	protected $table = 'users';
-	protected $pk	 = 'username';
+	protected $pk	 = 'id';
 	
 	
 

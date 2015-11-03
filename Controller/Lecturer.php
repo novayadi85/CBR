@@ -45,7 +45,7 @@ class Lecturer extends BaseController{
 			$updater->id_lecturer = $params['params'];
 			$updater->Find();		
 		} else {
-			$Lecturer->photo = 'no-photo.png';
+			//$Lecturer->photo = 'no-photo.png';
 		}
 		
 		
@@ -98,7 +98,8 @@ class Lecturer extends BaseController{
 		//pre($request);exit;
 	}
 	
-	function delete($post){
+	function delete(){
+		$post =  Core::Request();
 		$lecturer = $this->loadmodel('LecturerModel');
 		$lecturer->id_lecturer = $post['params'];
 		if($lecturer->Delete()){

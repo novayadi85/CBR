@@ -69,3 +69,14 @@ function object2Array($d) {
 	} 
  
  } 
+ 
+function OptionJenis(){
+	return array(
+		'spk'=>'Sistem Penunjung Keputusan',
+		'sis'=>'Sistem Pakar',
+		'rob'=>'Robotic',
+		'sim'=>'Sistem Informasi manajemen',
+		'ain'=>'Kecerdasan Buatan'
+		
+	);
+}

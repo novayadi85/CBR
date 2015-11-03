@@ -7,6 +7,7 @@ class Jurnal extends BaseController{
 		parent::__construct();
 		$this->data['layout'] = 'adminhtml';
 		$this->data['header'] = 'Data Jurnal Mahasiswa';
+		//$this->helper('Data');
 	}
 	
 	function add($request = false){
@@ -28,6 +29,7 @@ class Jurnal extends BaseController{
 			$jurnal->id_jurnal = $params['params'];
 			$jurnal->Find();
 			$this->data['request'] = $jurnal->variables;
+			// print_r($this->data['request']);
 		}
 		$lecturer = $this->loadmodel('LecturerModel');
 		$this->data['lecturer'] =  $lecturer->all();
@@ -57,14 +59,19 @@ class Jurnal extends BaseController{
 		
 		if(!empty($request)){
 			$jurnal = $this->loadmodel('JurnalModel');
-			$jurnal->nim = $request['nim'];
+			$lats_id = $jurnal->query("select MAX(`id_jurnal`) AS last FROM `jurnals` ");
+
+			$jurnal->writer_1 = strtolower($request['writer_1']);
+			$jurnal->writer_2 = strtolower($request['writer_2']);
 			$jurnal->title = $request['title'];
 			$jurnal->text = $request['abstract'];
 			$jurnal->year = $request['year']; 
 			$jurnal->created = date('Y-m-d');
 			$jurnal->user_id = 1; 
-			$jurnal->lecturer_ids = implode(",",$request['lecturer_ids']);
+			$jurnal->jenis = $request['jenis']; 
+			//$jurnal->lecturer_ids = implode(",",$request['lecturer_ids']);
 			//$jurnal->filepath = '/test/';
+			$jurnal->full_file = ''; 
 			
 			if ($_FILES['file']['size'] > 0) {
 				$uploader = $this->library('Libs_Upload');	
@@ -80,13 +87,23 @@ class Jurnal extends BaseController{
 					$oFile = $docObj->convertToText();
 					$sId = explode(".",$image);
 					$vals = array();
-					$vals['penulis'] = $request['nim'];
+					$vals['penulis'] = $request['writer_1'];
 					$vals['title'] = $request['title'];
 					$vals['th_buat'] = $request['year'];
-					$vals['ID'] = $request['nim'];
+					if(empty($params['params'])){
+						$vals['ID'] = ($lats_id[0]['last'] + 1);
+					} else {
+						$vals['ID'] = $params['params'];
+					}
+					
+					
+					
 					if($xml = $this->library('xml')->createXML($oFile,$sId[0],$vals)){
 						$jurnal->filetext = $xml;
 					}
+					
+					
+					
 				}else{//upload failed
 					$this->data['msg'] = addError($uploader->getMessage()); //get upload error message 
 					$this->add($request);
@@ -153,4 +170,6 @@ class Jurnal extends BaseController{
 		$data['jurnal'] = $jurnal->variables;
 			
 	}
+	
+	
 }
