@@ -381,6 +381,13 @@ i.fa.fa-cog {
 
  */
 			});
+			
+			$( "form#formSearch" ).submit(function( event ) {
+			    
+				if($('#query_search').val() ==''){
+					event.preventDefault();
+			    }
+			});
 				
 			});
 

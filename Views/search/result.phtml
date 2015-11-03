@@ -1,6 +1,12 @@
+	<style>
+	.hiden{
+		position:absolute;
+		left:-1000000px;
+	}
+	</style>
 	<div class="container">	
 		<div id="" class="row">
-			<form role="form" method="post" action="<?php echo site('search');?>">
+			<form id="form_result" role="form" method="post" action="<?php echo site('search');?>">
 				
 			<div class="col-md-6">
 				<a href="<?php echo site('search');?>" class="b_logoArea" h="ID=SERP,5037.1"><h5 class="b_logo" data-bm="1">Pencarian Jurnal dengan Metode Case Based Reasoning</h5></a>
@@ -10,7 +16,7 @@
 					
 				</div>
 				
-				<div class="tool-option" <?php if (!$request['from'] && !$request['to']  && !$request['jenis'] ) :  ?> <?php endif;?>>
+				<div class="tool-option <?php if (!$request['from'] && !$request['to']  && !$request['jenis'] ) :  ?> hiden <?php endif;?>">
 				<div class="form-group">
 				<select name="jenis" class="chosen-select">
 					<option value="0">Jenis Jurnal</option>
@@ -50,7 +56,7 @@
 				</select>
 				</div>
 				<div class="form-group">
-					<input type="text" name="penulis" placeholder="Masukkan nama publisher atau penulis" size="70" value="<?php echo (isset($request['penulis']))? $request['penulis']:'' ?>">
+					<input class="p writer" type="text" name="penulis" placeholder="Masukkan nama publisher atau penulis" size="70" value="<?php echo (isset($request['penulis']))? $request['penulis']:'' ?>">
 				</div>
 				</div>
 			</div>
@@ -160,9 +166,47 @@
         this.val('').val($thisVal);
         return this;
     }
+	
+	
 }(jQuery));
+
+$(function() {
+	$( "#form_result" ).submit(function( event ) {
+	   if($('.s_query').val() ==''){
+		 event.preventDefault();
+	   }
+	});
+
+	$('button.btn-sm').click(function(){
+		if($('.s_query').val() !=''){
+			$( "#form_result" ).submit();
+		} else {
+			return false;
+		}
+	});
+	$('.chosen-select').on('change', function(evt, params) {
+		if($('.s_query').val() !=''){
+			$( "#form_result" ).submit();
+		}
+		
+	});
+	
+	$('.writer').change(function(){
+		if($('.s_query').val() !=''){
+			$( "#form_result" ).submit();
+		}
+	});
+	
+});
+
 $('.s_query').focusTextToEnd();
+
 function toggleTool(){
-	 $( ".tool-option" ).toggle();
+	if($(".tool-option").hasClass('hiden')){
+		$(".tool-option").removeClass('hiden');
+	} else {
+		$(".tool-option").addClass('hiden');
+	}
+	//$( ".tool-option" ).toggle();
 }
 </script>
